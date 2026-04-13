@@ -1,3 +1,6 @@
+# next-intl generated types
+messages/*.d.json.ts
+
 # dependencies
 /node_modules
 /.pnp

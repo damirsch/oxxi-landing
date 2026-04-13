@@ -1,0 +1,20 @@
+{
+	"header": {
+		"nav": {
+			"features": "Features",
+			"howItWorks": "How It Works",
+			"pricing": "Pricing",
+			"faq": "FAQ",
+			"api": "API"
+		},
+		"login": "Log in",
+		"signup": "Sign up"
+	},
+	"hero": {
+		"title": "AI-powered hiring platform",
+		"subtitle": "Find the best talent faster with intelligent automation"
+	},
+	"footer": {
+		"rights": "All rights reserved."
+	}
+}

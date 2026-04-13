@@ -34,7 +34,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
 					hasError
 						? "border-danger-primary bg-danger-primary/5 placeholder:text-danger-primary focus-visible:border-danger-primary"
 						: "border-overlay-soft focus-within:border-overlay-bold",
-					rightElement && "pr-10",
+					rightElement && "pe-10",
 					className
 				)}
 				ref={ref}
@@ -47,7 +47,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
 		return (
 			<div className={cn("relative w-full", wrapperClassName)}>
 				{inputElement}
-				<div className="top-1/2 right-3 absolute -translate-y-1/2">
+				<div className="top-1/2 end-3 absolute -translate-y-1/2">
 					{rightElement}
 				</div>
 			</div>
