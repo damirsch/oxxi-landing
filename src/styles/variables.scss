@@ -1,0 +1,18 @@
+$max-width: 1280px;
+$content-padding: 24px;
+
+$section-gap: 120px;
+$section-gap-md: 80px;
+$section-gap-sm: 56px;
+
+$header-height: 64px;
+
+$transition-fast: 150ms ease;
+$transition-base: 200ms ease;
+$transition-slow: 300ms ease;
+
+$brand-gradient: linear-gradient(
+	135deg,
+	hsl(var(--brand-primary)),
+	hsl(var(--brand-light))
+);

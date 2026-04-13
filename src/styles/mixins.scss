@@ -1,0 +1,29 @@
+@mixin section-padding {
+	padding: $section-gap 0;
+
+	@media (max-width: 1024px) {
+		padding: $section-gap-md 0;
+	}
+
+	@media (max-width: 640px) {
+		padding: $section-gap-sm 0;
+	}
+}
+
+@mixin glass-card {
+	background: hsl(var(--surface-background) / 0.6);
+	backdrop-filter: blur(12px);
+	border: 1px solid hsl(var(--secondary-border));
+	border-radius: 16px;
+}
+
+@mixin gradient-text {
+	background: linear-gradient(
+		135deg,
+		hsl(var(--brand-primary)),
+		hsl(var(--brand-primary) / 0.7)
+	);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	background-clip: text;
+}
