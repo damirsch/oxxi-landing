@@ -12,15 +12,14 @@ const buttonVariants = cva(
 		variants: {
 			variant: {
 				default:
-					"bg-primary-text text-primary-background hover:text-primary-background shadow-sm active:bg-primary-text/80 font-medium hover:bg-primary-text/90",
+					"bg-primary-text  text-primary-background hover:text-primary-background shadow-sm active:bg-primary-text/80 font-semibold hover:bg-primary-text/90",
 				secondary: "border border-overlay-bold bg-transparent text-primary-text hover:bg-overlay-subtle",
 				accent: "bg-brand-primary text-white shadow-sm hover:bg-brand-primary/90 active:bg-brand-primary/85",
 				"accent-light":
 					"bg-brand-light text-brand-primary hover:text-brand-primary active:bg-brand-primary/25 hover:bg-brand-primary/20",
-				destructive:
-					"bg-danger-primary text-white shadow-sm font-medium hover:bg-danger-primary/90 active:bg-danger-primary",
+				destructive: "bg-danger-primary text-white shadow-sm hover:bg-danger-primary/90 active:bg-danger-primary",
 				ghost: "bg-transparent text-primary-text hover:bg-overlay-subtle",
-				link: "text-brand-primary hover:underline hover:text-brand-primary font-medium p-0 leading-none h-fit rounded-none px-0 active:bg-transparent whitespace-normal",
+				link: "text-brand-primary hover:underline hover:text-brand-primary p-0 leading-none h-fit rounded-none px-0 active:bg-transparent whitespace-normal",
 			},
 			size: {
 				default: "",
