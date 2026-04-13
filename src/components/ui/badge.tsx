@@ -1,41 +1,40 @@
-import * as React from "react";
-import { cva, type VariantProps } from "class-variance-authority";
-import { cn } from "@/lib/utils";
+import * as React from "react"
+import { cva, type VariantProps } from "class-variance-authority"
+import { cn } from "@/lib/utils"
 
 const badgeVariants = cva(
-	"inline-flex justify-center items-center px-2 py-1 rounded-full h-5 font-medium transition-colors",
+	"flex justify-center items-center gap-1.5 bg-surface-background border border-primary-border font-heading text-secondary-text text-sm tracking-[-0.01em] transition-colors",
 	{
 		variants: {
-			variant: {
-				blue: "bg-brand-light text-brand-primary",
-				gray: "bg-overlay-soft text-secondary-text",
-				outline:
-					"border border-brand-primary text-brand-primary bg-transparent",
-				success: "bg-success-primary/20 text-success-primary",
-			},
 			size: {
-				default: "text-xs tracking-[-0.12px]",
-				lg: "py-1.5 h-8 text-[15px]",
+				default: "px-2.5 h-7 rounded-full shadow-[0_2px_4px_0_rgba(0,0,0,0.04)]",
+				small: "px-2 h-6 bg-primary-background rounded-[6px] shadow-[0_2px_6px_0_rgba(0,0,0,0.06)]",
 			},
 		},
-		defaultVariants: {
-			variant: "blue",
-			size: "default",
-		},
+		defaultVariants: { size: "default" },
 	}
-);
+)
 
-export interface BadgeProps
-	extends React.HTMLAttributes<HTMLDivElement>,
-		VariantProps<typeof badgeVariants> {}
-
-function Badge({ className, variant, size, ...props }: BadgeProps) {
-	return (
-		<div
-			className={cn(badgeVariants({ variant, size }), "gap-1", className)}
-			{...props}
-		/>
-	);
+export interface BadgeProps extends React.HTMLAttributes<HTMLDivElement>, VariantProps<typeof badgeVariants> {
+	icon?: React.ReactNode
+	iconStrokeWidth?: number
 }
 
-export { Badge, badgeVariants };
+function Badge({ className, size, icon, iconStrokeWidth, children, ...props }: BadgeProps) {
+	return (
+		<div className={cn(badgeVariants({ size }), className)} {...props}>
+			{icon != null && (
+				<span className='inline-flex [&_svg]:size-4 text-tertiary-text shrink-0 [&_svg]:shrink-0'>
+					{iconStrokeWidth != null && React.isValidElement(icon)
+						? React.cloneElement(icon as React.ReactElement<{ strokeWidth?: number }>, {
+								strokeWidth: iconStrokeWidth,
+						  })
+						: icon}
+				</span>
+			)}
+			{children}
+		</div>
+	)
+}
+
+export { Badge, badgeVariants }

@@ -13,6 +13,6 @@ $transition-slow: 300ms ease;
 
 $brand-gradient: linear-gradient(
 	135deg,
-	hsl(var(--brand-primary)),
-	hsl(var(--brand-light))
+	var(--color-brand-primary),
+	var(--color-brand-light)
 );

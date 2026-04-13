@@ -23,6 +23,41 @@ const fullWidthStyle = {
 	right: "calc(-50vw + 50%)",
 };
 
+const HATCH_SPACING = 12;
+const HATCH_COLOR = "hsl(220 11% 93%)";
+
+export function HatchedPattern({ className, style }: { className?: string; style?: React.CSSProperties }) {
+	return (
+		<svg
+			className={cn("z-[-1] absolute inset-0 w-full h-full pointer-events-none", className)}
+			preserveAspectRatio="none"
+			style={style}
+		>
+			<defs>
+				<pattern
+					id="hatch-pattern"
+					width={HATCH_SPACING}
+					height={HATCH_SPACING}
+					patternUnits="userSpaceOnUse"
+					patternTransform="rotate(45)"
+				>
+					<line x1="0" y1="0" x2="0" y2={HATCH_SPACING} stroke={HATCH_COLOR} strokeWidth="2" />
+				</pattern>
+			</defs>
+			<rect width="100%" height="100%" fill="url(#hatch-pattern)" opacity="0.9" />
+		</svg>
+	);
+}
+
+export function FullWidthLine({ position = "top" }: { position?: "top" | "bottom" }) {
+	return (
+		<div
+			className={cn("absolute bg-tertiary-border h-px", position === "top" ? "top-0" : "bottom-0")}
+			style={fullWidthStyle}
+		/>
+	);
+}
+
 export function DividerLine({
 	position = "top",
 }: {

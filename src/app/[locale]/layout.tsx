@@ -1,64 +1,68 @@
-import type { Metadata } from "next";
-import { Inter, Noto_Sans_Arabic } from "next/font/google";
-import { notFound } from "next/navigation";
-import { setRequestLocale } from "next-intl/server";
-import { NextIntlClientProvider } from "next-intl";
-import { getMessages } from "next-intl/server";
-import { routing, RTL_LOCALES, type Locale } from "@/i18n/routing";
-import "../globals.css";
+import type { Metadata } from "next"
+import { Inter, Geist, Noto_Sans_Arabic } from "next/font/google"
+import { notFound } from "next/navigation"
+import { setRequestLocale } from "next-intl/server"
+import { NextIntlClientProvider } from "next-intl"
+import { getMessages } from "next-intl/server"
+import { routing, RTL_LOCALES, type Locale } from "@/i18n/routing"
+import "../globals.css"
 
 const inter = Inter({
 	variable: "--font-inter",
 	subsets: ["latin"],
 	display: "swap",
-});
+})
+
+const geist = Geist({
+	variable: "--font-geist",
+	subsets: ["latin"],
+	display: "swap",
+})
 
 const notoArabic = Noto_Sans_Arabic({
 	variable: "--font-arabic",
 	subsets: ["arabic"],
 	display: "swap",
-});
+})
 
 export const metadata: Metadata = {
 	title: "Oxxi",
 	description: "Oxxi — AI-powered hiring platform",
-};
+}
 
 export function generateStaticParams() {
-	return routing.locales.map((locale) => ({ locale }));
+	return routing.locales.map((locale) => ({ locale }))
 }
 
 export default async function LocaleLayout({
 	children,
 	params,
 }: {
-	children: React.ReactNode;
-	params: Promise<{ locale: string }>;
+	children: React.ReactNode
+	params: Promise<{ locale: string }>
 }) {
-	const { locale: rawLocale } = await params;
+	const { locale: rawLocale } = await params
 
 	if (!routing.locales.includes(rawLocale as Locale)) {
-		notFound();
+		notFound()
 	}
 
-	const locale = rawLocale as Locale;
-	setRequestLocale(locale);
+	const locale = rawLocale as Locale
+	setRequestLocale(locale)
 
-	const isRtl = RTL_LOCALES.includes(locale);
-	const dir = isRtl ? "rtl" : "ltr";
+	const isRtl = RTL_LOCALES.includes(locale)
+	const dir = isRtl ? "rtl" : "ltr"
 	const fontClass = isRtl
-		? `${notoArabic.variable} ${inter.variable}`
-		: inter.variable;
+		? `${notoArabic.variable} ${inter.variable} ${geist.variable}`
+		: `${inter.variable} ${geist.variable}`
 
-	const messages = await getMessages();
+	const messages = await getMessages()
 
 	return (
 		<html lang={locale} dir={dir} className={`${fontClass} antialiased`}>
-			<body className="flex flex-col min-h-screen">
-				<NextIntlClientProvider messages={messages}>
-					{children}
-				</NextIntlClientProvider>
+			<body className='flex flex-col min-h-screen font-medium'>
+				<NextIntlClientProvider messages={messages}>{children}</NextIntlClientProvider>
 			</body>
 		</html>
-	);
+	)
 }
