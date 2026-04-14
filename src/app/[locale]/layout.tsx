@@ -26,7 +26,7 @@ const notoArabic = Noto_Sans_Arabic({
 })
 
 export const metadata: Metadata = {
-	title: "Oxxi",
+	title: "Oxxi - Hiring Infrastructure",
 	description: "Oxxi — AI-powered hiring platform",
 }
 

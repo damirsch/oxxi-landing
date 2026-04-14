@@ -22,7 +22,7 @@ export function Header() {
 	const t = useTranslations("header")
 
 	useEffect(() => {
-		const onScroll = () => setScrolled(window.scrollY > 30)
+		const onScroll = () => setScrolled(window.scrollY > 0)
 		onScroll()
 		window.addEventListener("scroll", onScroll, { passive: true })
 		return () => window.removeEventListener("scroll", onScroll)
@@ -35,9 +35,7 @@ export function Header() {
 				scrolled ? "border-b border-tertiary-border" : "border-b border-transparent"
 			)}
 			style={{
-				boxShadow: scrolled
-					? "0 8px 24px 0 transparent"
-					: "0 8px 24px 12px var(--color-primary-background)",
+				boxShadow: scrolled ? "0 8px 24px 0 transparent" : "0 8px 24px 12px var(--color-primary-background)",
 			}}
 		>
 			<div className='relative flex justify-between items-center mx-auto max-w-[1200px] h-full'>
