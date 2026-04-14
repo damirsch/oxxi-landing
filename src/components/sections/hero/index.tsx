@@ -29,6 +29,7 @@ export default function Hero() {
 								className='group-hover/badges:bg-surface-background -me-1 ps-1.5 w-fit group-hover/badges:-rotate-2 transition-all duration-300'
 								size='small'
 								icon={<IconSearch />}
+								iconClassName='text-tertiary-text'
 							>
 								Search
 							</Badge>
@@ -37,6 +38,7 @@ export default function Hero() {
 								className='group-hover/badges:bg-surface-background -me-1 ps-1.5 w-fit group-hover/badges:rotate-2 transition-all duration-300'
 								size='small'
 								icon={<IconAnnouncement />}
+								iconClassName='text-tertiary-text'
 							>
 								Distribution
 							</Badge>
@@ -45,6 +47,7 @@ export default function Hero() {
 								className='group-hover/badges:bg-surface-background ps-1.5 w-fit group-hover/badges:rotate-2 transition-all duration-300'
 								size='small'
 								icon={<IconCalendarCheck />}
+								iconClassName='text-tertiary-text'
 							>
 								Scheduling
 							</Badge>

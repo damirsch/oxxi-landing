@@ -18,13 +18,14 @@ const badgeVariants = cva(
 export interface BadgeProps extends React.HTMLAttributes<HTMLDivElement>, VariantProps<typeof badgeVariants> {
 	icon?: React.ReactNode
 	iconStrokeWidth?: number
+	iconClassName?: string
 }
 
-function Badge({ className, size, icon, iconStrokeWidth, children, ...props }: BadgeProps) {
+function Badge({ className, size, icon, iconStrokeWidth, iconClassName, children, ...props }: BadgeProps) {
 	return (
 		<div className={cn(badgeVariants({ size }), className)} {...props}>
 			{icon != null && (
-				<span className='inline-flex [&_svg]:size-4 text-secondary-text shrink-0 [&_svg]:shrink-0'>
+				<span className={cn("inline-flex [&_svg]:size-4 text-secondary-text shrink-0 [&_svg]:shrink-0", iconClassName)}>
 					{iconStrokeWidth != null && React.isValidElement(icon)
 						? React.cloneElement(icon as React.ReactElement<{ strokeWidth?: number }>, {
 								strokeWidth: iconStrokeWidth,
