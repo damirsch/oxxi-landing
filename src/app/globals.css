@@ -17,8 +17,8 @@
   --color-surface-background: hsl(0 0% 100%);
 
   --color-primary-border: hsl(218 8% 88%);
-  --color-secondary-border: hsl(210 4% 92%);
-  --color-tertiary-border: hsl(210 3% 93%);
+  --color-secondary-border: hsl(218 9% 92%);
+  --color-tertiary-border: hsl(218 9% 93%);
 
   --color-brand-primary: hsl(217 91% 60%);
   --color-brand-light: hsl(217 91% 60% / 0.1);
@@ -27,7 +27,7 @@
   --color-button-hover: hsl(0 0% 97%);
 
   --color-overlay-ultra-subtle: hsl(0 0% 0% / 0.02);
-  --color-overlay-subtle: hsl(0 0% 0% / 0.03);
+  --color-overlay-subtle: hsl(220 5% 12% / 0.02);
   --color-overlay-soft: hsl(0 0% 0% / 0.05);
   --color-overlay-regular: hsl(0 0% 0% / 0.07);
   --color-overlay-bold: hsl(0 0% 0% / 0.12);

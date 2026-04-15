@@ -7,7 +7,9 @@ interface SectionWrapperProps {
 
 export function SectionWrapper({ children, className }: SectionWrapperProps) {
 	return (
-		<section className={cn("mx-auto pt-20 border-tertiary-border border-r border-l w-full max-w-[1200px]", className)}>
+		<section
+			className={cn("gap-y-8 mx-auto pt-20 border-tertiary-border border-r border-l w-full max-w-[1200px]", className)}
+		>
 			{children}
 		</section>
 	)
