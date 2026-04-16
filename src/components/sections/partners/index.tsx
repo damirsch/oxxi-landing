@@ -1,6 +1,6 @@
 import { Badge } from "@/components/ui/badge"
 import { FullWidthLine, SectionWrapper } from "@/components/ui/wrappers"
-import Image from "next/image"
+import { cn } from "@/lib/utils"
 
 export const agencyPartnerLogos = [
 	{ src: "/partner-logos/Veritone.svg", alt: "Veritone" },
@@ -26,34 +26,33 @@ export default function Partners() {
 			<div className='relative flex mt-8'>
 				<FullWidthLine position='top' />
 				<FullWidthLine position='bottom' />
-				<div className='relative place-items-center gap-x-4 grid grid-cols-4 px-6 py-11 border-secondary-border border-r w-full'>
+				<div className='relative place-items-center gap-4 sm:gap-12 grid grid-cols-4 px-6 py-11 border-secondary-border border-r w-full'>
 					<Badge className='top-0 left-1/2 absolute rounded-[6px] h-8 -translate-x-1/2 -translate-y-1/2'>Brands</Badge>
 					{brandPartnerLogos.map((logo) => (
-						<Image
+						// eslint-disable-next-line @next/next/no-img-element
+						<img
 							key={logo.alt}
 							src={logo.src}
 							alt={logo.alt}
-							width={120}
-							height={24}
-							unoptimized
-							className='h-5 sm:h-6 object-contain'
+							className='h-5 sm:h-6 w-auto object-contain'
 							draggable={false}
 						/>
 					))}
 				</div>
-				<div className='relative place-items-center gap-x-8 sm:gap-x-12 grid grid-cols-2 px-6 py-11 w-full'>
+				<div className='relative place-items-center gap-8 sm:gap-12 grid grid-cols-2 px-6 py-11 w-full'>
 					<Badge className='top-0 left-1/2 absolute rounded-[6px] h-8 -translate-x-1/2 -translate-y-1/2'>
 						Agencies
 					</Badge>
 					{agencyPartnerLogos.map((logo) => (
-						<Image
+						// eslint-disable-next-line @next/next/no-img-element
+						<img
 							key={logo.alt}
 							src={logo.src}
 							alt={logo.alt}
-							width={120}
-							height={24}
-							unoptimized
-							className='h-5 sm:h-6 object-contain'
+							className={cn(
+								"w-auto object-contain",
+								logo.alt === "Broadbean" ? "h-12" : "h-5 sm:h-6"
+							)}
 							draggable={false}
 						/>
 					))}

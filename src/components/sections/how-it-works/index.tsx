@@ -109,7 +109,14 @@ export default function HowItWorks() {
 							number='02'
 						/>
 						<div className='group/candidates flex flex-col gap-3.5 cursor-default'>
-							<Image className='px-4' src='/how-it-works/candidates-1.png' alt='Candidates' width={540} height={200} />
+							<Image
+								className='px-4'
+								src='/how-it-works/candidates-1.png'
+								alt='Candidates'
+								width={540}
+								height={200}
+								priority
+							/>
 							<div
 								className='z-10 relative flex justify-between gap-3 shadow-candidate-row group-hover/candidates:shadow-candidate-row-hover p-3 rounded-[16px] group-hover/candidates:scale-[1.02] transition-all duration-300 ease-out'
 								style={{
@@ -137,7 +144,7 @@ export default function HowItWorks() {
 							<Image className='px-4' src='/how-it-works/candidates-2.png' alt='Candidates' width={540} height={200} />
 						</div>
 					</Card>
-					<Card className='col-span-7'>
+					<Card className='col-span-7 pb-0'>
 						<CardHeader
 							title='Shortlist with context'
 							description={
@@ -145,6 +152,33 @@ export default function HowItWorks() {
 							}
 							number='03'
 						/>
+						<div className='relative flex mx-auto w-[95%]'>
+							<div className='bg-secondary-background px-4 pt-4 rounded-t-[24px] w-full overflow-hidden'>
+								<Image
+									className='shadow-candidate-table object-contain'
+									src='/how-it-works/candidates-table.png'
+									alt='Candidates table'
+									width={1400}
+									height={900}
+								/>
+							</div>
+							<div
+								className='z-10 absolute inset-0 pointer-events-none'
+								style={{
+									background:
+										"linear-gradient(to bottom, transparent 0%, transparent 65%, color-mix(in oklch, var(--color-surface-background) 90%, transparent) 85%, var(--color-surface-background) 100%)",
+								}}
+							/>
+							<p
+								className='z-20 absolute bottom-5 left-1/2 max-w-[min(100%-1.5rem,28rem)] -translate-x-1/2 rounded-full bg-[#18181B] px-5 py-2.5 font-medium text-[12px] text-balance text-center text-white tracking-[-0.02em] sm:px-8 sm:py-3 sm:text-[13px]'
+								style={{
+									boxShadow:
+										"0 22px 44px rgba(0, 0, 0, 0.14), 0 10px 20px rgba(0, 0, 0, 0.08), 0 3px 8px rgba(0, 0, 0, 0.06), 0 1px 0 rgba(255, 255, 255, 0.06) inset",
+								}}
+							>
+								{"You've viewed 10+ candidates today!"}
+							</p>
+						</div>
 					</Card>
 					<Card className='col-span-7'>
 						<CardHeader

@@ -93,6 +93,14 @@
     0 6px 12px rgba(0, 0, 0, 0.24);
 }
 
+@utility shadow-candidate-table {
+  box-shadow:
+    0 179px 72px rgba(0, 0, 0, 0.01),
+    0 101px 60px rgba(0, 0, 0, 0.04),
+    0 45px 45px rgba(0, 0, 0, 0.04),
+    0 11px 25px rgba(0, 0, 0, 0.04);
+}
+
 @utility gradient-outline {
   mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;

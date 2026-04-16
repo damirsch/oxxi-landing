@@ -29,7 +29,7 @@ export function ParallaxCard({
 	const y = useTransform(scrollYProgress, [0, 1], [speed, -speed])
 
 	return (
-		<motion.div ref={ref} style={{ y }} className={cn("will-change-transform", className)}>
+		<motion.div ref={ref} style={{ y }} className={cn("relative will-change-transform", className)}>
 			<motion.div
 				animate={{ y: [-floatDistance, floatDistance, -floatDistance] }}
 				transition={{
