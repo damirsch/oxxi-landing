@@ -1,4 +1,12 @@
-import { IconArrowUp, IconBankNote, IconChartUp, IconHelpCircle, IconMarkerPin, IconTool } from "@/components/ui/icons"
+import {
+	IconArrowUp,
+	IconBankNote,
+	IconChartUp,
+	IconCheckCircle,
+	IconHelpCircle,
+	IconMarkerPin,
+	IconTool,
+} from "@/components/ui/icons"
 import { Badge } from "@/components/ui/badge"
 import SectionHeader from "@/components/ui/section-header"
 import { FullWidthLine, SectionWrapper } from "@/components/ui/wrappers"
@@ -169,15 +177,24 @@ export default function HowItWorks() {
 										"linear-gradient(to bottom, transparent 0%, transparent 65%, color-mix(in oklch, var(--color-surface-background) 90%, transparent) 85%, var(--color-surface-background) 100%)",
 								}}
 							/>
-							<p
-								className='z-20 absolute bottom-5 left-1/2 max-w-[min(100%-1.5rem,28rem)] -translate-x-1/2 rounded-full bg-[#18181B] px-5 py-2.5 font-medium text-[12px] text-balance text-center text-white tracking-[-0.02em] sm:px-8 sm:py-3 sm:text-[13px]'
-								style={{
-									boxShadow:
-										"0 22px 44px rgba(0, 0, 0, 0.14), 0 10px 20px rgba(0, 0, 0, 0.08), 0 3px 8px rgba(0, 0, 0, 0.06), 0 1px 0 rgba(255, 255, 255, 0.06) inset",
-								}}
-							>
-								{"You've viewed 10+ candidates today!"}
-							</p>
+							<div className='bottom-3 left-1/2 z-20 absolute -translate-x-1/2'>
+								<div
+									className='flex items-center gap-2 bg-[#18181B] px-3.5 py-2.5 rounded-[16px] w-fit font-semibold text-white'
+									style={{
+										boxShadow:
+											"0 22px 44px rgba(0, 0, 0, 0.14), 0 10px 20px rgba(0, 0, 0, 0.08), 0 3px 8px rgba(0, 0, 0, 0.06), 0 1px 0 rgba(255, 255, 255, 0.06) inset",
+										background:
+											"linear-gradient(102deg, var(--color-primary-text) 0%, #222223 15%, #2C2C2C 32%, #020303 57%, var(--color-primary-text) 100%)",
+									}}
+								>
+									<IconCheckCircle className='size-4 shrink-0' />
+									<span className='text-[13px] leading-none tracking-[-0.01em] whitespace-nowrap'>
+										You&apos;ve viewed 10+ candidates today!
+									</span>
+								</div>
+								<div className='top-0 left-1/2 -z-10 absolute bg-[#787777] rounded-[16px] w-[calc(100%-26px)] h-[calc(100%+5px)] -translate-x-1/2' />
+								<div className='top-0 left-1/2 -z-20 absolute bg-[#B2B2B2] rounded-[16px] w-[calc(100%-54px)] h-[calc(100%+10px)] -translate-x-1/2' />
+							</div>
 						</div>
 					</Card>
 					<Card className='col-span-7'>
@@ -189,12 +206,21 @@ export default function HowItWorks() {
 							number='04'
 						/>
 					</Card>
-					<Card className='col-span-5'>
+					<Card className='col-span-5 overflow-hidden'>
 						<CardHeader
 							title='Keep hiring memory'
 							description={"Every search, conversation, and decision stays\nstored and reusable across future roles"}
 							number='05'
 						/>
+						<div className='relative w-full min-h-[250px]'>
+							<Image
+								className='absolute h-full object-contain scale-125'
+								src='/how-it-works/context-diagram.png'
+								alt='Keep hiring memory'
+								width={1380}
+								height={920}
+							/>
+						</div>
 					</Card>
 				</div>
 			</div>
