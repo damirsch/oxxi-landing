@@ -205,6 +205,15 @@ export default function HowItWorks() {
 							}
 							number='04'
 						/>
+						<div className='relative w-full min-h-[250px]'>
+							<Image
+								className='left-0 absolute h-full object-contain scale-104 origin-top-left'
+								src='/how-it-works/candidate-card.png'
+								alt='Take action'
+								width={640}
+								height={250}
+							/>
+						</div>
 					</Card>
 					<Card className='col-span-5 overflow-hidden'>
 						<CardHeader

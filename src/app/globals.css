@@ -124,6 +124,11 @@
   animation: blink 1.4s ease-out infinite;
 }
 
+@keyframes progress-fill {
+  from { height: 0%; }
+  to { height: 100%; }
+}
+
 * {
   scrollbar-width: thin;
   scrollbar-color: var(--color-overlay-bold) transparent;

@@ -5,6 +5,7 @@ import type { Locale } from "@/i18n/routing"
 import Hero from "@/components/sections/hero"
 import Partners from "@/components/sections/partners"
 import HowItWorks from "@/components/sections/how-it-works"
+import KeyFeatures from "@/components/sections/key-features"
 
 export default async function Home({ params }: { params: Promise<{ locale: string }> }) {
 	const { locale } = await params
@@ -17,6 +18,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
 				<Hero />
 				<Partners />
 				<HowItWorks />
+				<KeyFeatures />
 				<SectionWrapper className='h-40'>
 					<span></span>
 				</SectionWrapper>
