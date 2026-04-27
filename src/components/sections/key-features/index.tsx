@@ -5,8 +5,9 @@ import { IconBenchmark, IconCandidate, IconJob, IconKey, type IconProps } from "
 import SectionHeader from "@/components/ui/section-header"
 import { FullWidthLine, SectionWrapper } from "@/components/ui/wrappers"
 import { cn } from "@/lib/utils"
+import { FeatureContent } from "./content"
 
-const CYCLE_MS = 6_000
+export const CYCLE_MS = 6_000
 
 const KEY_FEATURE_ITEMS = [
 	{
@@ -50,34 +51,84 @@ function FeatureTabs() {
 	const count = KEY_FEATURE_ITEMS.length
 	const [activeIndex, setActiveIndex] = useState(0)
 	const [cycle, setCycle] = useState(0)
+	const [isInView, setIsInView] = useState(false)
+	const [hasStarted, setHasStarted] = useState(false)
+	const [pinned, setPinned] = useState(false)
+	const asideRef = useRef<HTMLElement>(null)
 	const timerRef = useRef<ReturnType<typeof setTimeout>>(undefined)
+	const elapsedRef = useRef(0)
+	const lastTickRef = useRef(0)
 
-	const select = useCallback((index: number) => {
-		setActiveIndex(index)
-		setCycle((c) => c + 1)
-	}, [])
+	const select = useCallback(
+		(index: number) => {
+			if (index === activeIndex) {
+				setPinned(true)
+				return
+			}
+			setPinned(false)
+			setActiveIndex(index)
+			setCycle((c) => c + 1)
+			elapsedRef.current = 0
+		},
+		[activeIndex]
+	)
 
 	useEffect(() => {
+		const el = asideRef.current
+		if (!el) return
+		let startTimer: ReturnType<typeof setTimeout> | undefined
+		const observer = new IntersectionObserver(
+			([entry]) => {
+				setIsInView(entry.isIntersecting)
+				if (entry.isIntersecting && !hasStarted) {
+					startTimer = setTimeout(() => setHasStarted(true), 600)
+				}
+			},
+			{ threshold: 0.3 }
+		)
+		observer.observe(el)
+		return () => {
+			observer.disconnect()
+			clearTimeout(startTimer)
+		}
+	}, [hasStarted])
+
+	useEffect(() => {
+		elapsedRef.current = 0
+	}, [activeIndex, cycle])
+
+	useEffect(() => {
+		if (!isInView || !hasStarted || pinned) return
+		const remaining = CYCLE_MS - elapsedRef.current
+		lastTickRef.current = performance.now()
 		timerRef.current = setTimeout(() => {
+			elapsedRef.current = 0
 			setActiveIndex((i) => (i + 1) % count)
-		}, CYCLE_MS)
-		return () => clearTimeout(timerRef.current)
-	}, [activeIndex, count, cycle])
+		}, remaining)
+		return () => {
+			elapsedRef.current += performance.now() - lastTickRef.current
+			clearTimeout(timerRef.current)
+		}
+	}, [isInView, hasStarted, activeIndex, count, cycle, pinned])
 
 	return (
-		<aside className='flex flex-col gap-1.5 max-w-[340px]'>
-			{KEY_FEATURE_ITEMS.map((feature, index) => (
-				<KeyFeatureCard
-					key={feature.title}
-					title={feature.title}
-					description={feature.description}
-					Icon={feature.Icon as FC<IconProps>}
-					isActive={index === activeIndex}
-					animationKey={`${activeIndex}-${cycle}`}
-					onSelect={() => select(index)}
-				/>
-			))}
-		</aside>
+		<>
+			<aside ref={asideRef} className='flex flex-col gap-1.5 max-w-[340px]'>
+				{KEY_FEATURE_ITEMS.map((feature, index) => (
+					<KeyFeatureCard
+						key={feature.title}
+						title={feature.title}
+						description={feature.description}
+						Icon={feature.Icon as FC<IconProps>}
+						isActive={index === activeIndex}
+						isRunning={isInView && hasStarted}
+						animationKey={`${activeIndex}-${cycle}`}
+						onSelect={() => select(index)}
+					/>
+				))}
+			</aside>
+			{hasStarted && <FeatureContent key={hasStarted ? "active" : "idle"} activeIndex={activeIndex} />}
+		</>
 	)
 }
 
@@ -85,40 +136,44 @@ interface KeyFeatureCardProps {
 	title: string
 	description: string
 	isActive: boolean
+	isRunning: boolean
 	animationKey: string
 	onSelect: () => void
 	Icon: FC<IconProps>
 }
 
-function KeyFeatureCard({ title, description, isActive, animationKey, onSelect, Icon }: KeyFeatureCardProps) {
+function KeyFeatureCard({ title, description, isActive, isRunning, animationKey, onSelect, Icon }: KeyFeatureCardProps) {
 	return (
 		<button
 			type='button'
 			aria-pressed={isActive}
 			onClick={onSelect}
 			className={cn(
-				"flex shadow-[0_2px_6px_0_rgba(0,0,0,0.04)] p-9 border border-primary-border rounded-[14px] w-full text-left transition-colors",
-				isActive ? "bg-surface-background select-text" : "bg-[#F6F6F6] hover:bg-[#fcfcfc] cursor-pointer"
+				"flex p-9 border border-primary-border rounded-[14px] w-full text-left transition-colors",
+				isActive
+					? "bg-surface-background select-text shadow-[0_2px_6px_0_rgba(0,0,0,0.04)]"
+					: "bg-[#F6F6F6] shadow-[0_2px_6px_0_rgba(0,0,0,0.03)] hover:bg-[#fcfcfc] cursor-pointer"
 			)}
 		>
 			<div
-				className='flex flex-col bg-secondary-border rounded-full w-[2px] select-none shrink-0 overflow-hidden'
+				className='flex flex-col bg-secondary-border rounded-full w-[2px] overflow-hidden select-none shrink-0'
 				aria-hidden
 			>
 				{isActive ? (
 					<div
 						key={animationKey}
 						className='bg-brand-primary rounded-full w-full'
-						style={{ animation: `progress-fill ${CYCLE_MS}ms linear forwards` }}
+						style={{
+							animation: `progress-fill ${CYCLE_MS}ms linear forwards`,
+							animationPlayState: isRunning ? "running" : "paused",
+						}}
 					/>
 				) : null}
 			</div>
 			<div className='flex flex-col gap-2 px-4 py-2'>
 				<div className='flex items-center gap-2 font-semibold text-base'>
 					<Icon className={cn("size-[18px]", isActive ? "text-secondary-text" : "text-tertiary-text")} />
-					<span className={cn(isActive ? "cursor-text text-primary-text" : "text-secondary-text")}>
-						{title}
-					</span>
+					<span className={cn(isActive ? "cursor-text" : "text-secondary-text")}>{title}</span>
 				</div>
 				<p className={cn("text-[15px]", isActive ? "cursor-text text-secondary-text" : "text-tertiary-text")}>
 					{description}
