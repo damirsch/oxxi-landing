@@ -28,12 +28,13 @@ export function HeroShowcase() {
 				{/* Product screenshot */}
 				<div className='relative'>
 					<Image
-						className='rounded-[16px] rounded-b-none w-full h-auto'
+						className='rounded-[16px] rounded-b-none w-full h-auto select-none pointer-events-none'
 						src='/hero/product.png'
 						alt='Product'
 						width={1200}
 						height={636}
 						priority
+						draggable={false}
 					/>
 					<div className='absolute -inset-px bg-linear-to-b from-primary-border to-tertiary-border rounded-[17px] rounded-b-none gradient-outline pointer-events-none' />
 					<div
@@ -49,11 +50,12 @@ export function HeroShowcase() {
 				<motion.div variants={item} className='top-[18%] -right-[12%] z-20 absolute w-[26%]'>
 					<ParallaxCard className='rotate-8' speed={25} floatDuration={4} floatDistance={3}>
 						<Image
-							className='shadow-card border border-secondary-border rounded-xl w-full h-auto'
+							className='shadow-card border border-secondary-border rounded-xl w-full h-auto select-none pointer-events-none'
 							src='/hero/card-1.png'
 							alt='Sidebar'
 							width={903}
 							height={498}
+							draggable={false}
 						/>
 					</ParallaxCard>
 				</motion.div>
@@ -62,11 +64,12 @@ export function HeroShowcase() {
 				<motion.div variants={item} className='top-[34%] -left-[8%] z-20 absolute w-[33%]'>
 					<ParallaxCard className='-rotate-8' speed={70} floatDuration={4.5} floatDistance={7}>
 						<Image
-							className='shadow-card border border-secondary-border rounded-xl w-full h-auto'
+							className='shadow-card border border-secondary-border rounded-xl w-full h-auto select-none pointer-events-none'
 							src='/hero/card-2.png'
 							alt='Job card'
 							width={1044}
 							height={664}
+							draggable={false}
 						/>
 					</ParallaxCard>
 				</motion.div>

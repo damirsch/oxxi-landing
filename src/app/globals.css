@@ -38,11 +38,20 @@
   --color-success-secondary: hsl(142 50% 80%);
   --color-attention-primary: hsl(35 96% 51%);
 
+  --color-job-primary: hsl(258 85% 66%);
+
   --radius-sm: calc(0.5rem - 4px);
   --radius-md: calc(0.5rem - 2px);
   --radius-lg: 0.5rem;
   --radius-xl: calc(0.5rem + 4px);
   --radius-2xl: calc(0.5rem + 8px);
+
+  --animate-marquee: marquee 30s linear infinite;
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(calc(-100% - 3.5rem)); }
 }
 
 @layer base {

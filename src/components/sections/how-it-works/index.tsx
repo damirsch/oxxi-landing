@@ -118,12 +118,13 @@ export default function HowItWorks() {
 						/>
 						<div className='group/candidates flex flex-col gap-3.5 cursor-default'>
 							<Image
-								className='px-4'
+								className='px-4 pointer-events-none select-none'
 								src='/how-it-works/candidates-1.png'
 								alt='Candidates'
 								width={540}
 								height={200}
 								priority
+								draggable={false}
 							/>
 							<div
 								className='z-10 relative flex justify-between gap-3 shadow-candidate-row group-hover/candidates:shadow-candidate-row-hover p-3 rounded-[16px] group-hover/candidates:scale-[1.02] transition-all duration-300 ease-out'
@@ -132,7 +133,14 @@ export default function HowItWorks() {
 										"linear-gradient(102deg, var(--color-primary-text) 0%, #222223 15%, #404040 32%, #020303 57%, var(--color-primary-text) 100%)",
 								}}
 							>
-								<Image src='/how-it-works/candidate-avatar.png' alt='avatar' width={40} height={40} />
+								<Image
+									src='/how-it-works/candidate-avatar.png'
+									alt='avatar'
+									width={40}
+									height={40}
+									draggable={false}
+									className='pointer-events-none select-none'
+								/>
 								<div className='flex flex-col justify-center gap-1 w-full font-semibold'>
 									<p className='text-[15px] text-white leading-[1.1] tracking-[-0.01em]'>James Walker</p>
 									<p
@@ -149,7 +157,14 @@ export default function HowItWorks() {
 									Best match
 								</div>
 							</div>
-							<Image className='px-4' src='/how-it-works/candidates-2.png' alt='Candidates' width={540} height={200} />
+							<Image
+								className='px-4 pointer-events-none select-none'
+								src='/how-it-works/candidates-2.png'
+								alt='Candidates'
+								width={540}
+								height={200}
+								draggable={false}
+							/>
 						</div>
 					</Card>
 					<Card className='col-span-7 pb-0'>
@@ -163,11 +178,12 @@ export default function HowItWorks() {
 						<div className='relative flex mx-auto w-[95%]'>
 							<div className='bg-secondary-background px-4 pt-4 rounded-t-[24px] w-full overflow-hidden'>
 								<Image
-									className='shadow-candidate-table object-contain'
+									className='shadow-candidate-table object-contain pointer-events-none select-none'
 									src='/how-it-works/candidates-table.png'
 									alt='Candidates table'
 									width={1400}
 									height={900}
+									draggable={false}
 								/>
 							</div>
 							<div
@@ -207,11 +223,12 @@ export default function HowItWorks() {
 						/>
 						<div className='relative w-full min-h-[250px]'>
 							<Image
-								className='left-0 absolute h-full object-contain scale-104 origin-top-left'
+								className='left-0 absolute h-full object-contain scale-104 origin-top-left pointer-events-none select-none'
 								src='/how-it-works/candidate-card.png'
 								alt='Take action'
 								width={640}
 								height={250}
+								draggable={false}
 							/>
 						</div>
 					</Card>
@@ -223,11 +240,12 @@ export default function HowItWorks() {
 						/>
 						<div className='relative w-full min-h-[250px]'>
 							<Image
-								className='absolute h-full object-contain scale-125'
+								className='absolute h-full object-contain scale-125 pointer-events-none select-none'
 								src='/how-it-works/context-diagram.png'
 								alt='Keep hiring memory'
 								width={1380}
 								height={920}
+								draggable={false}
 							/>
 						</div>
 					</Card>

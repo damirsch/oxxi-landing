@@ -1,7 +1,6 @@
 import { FullWidthLine, HatchedPattern, SectionWrapper } from "@/components/ui/wrappers"
 import { HeroShowcase } from "./showcase"
 import { Badge } from "@/components/ui/badge"
-import { IconAnnouncement, IconCalendarCheck, IconSearch } from "@/components/ui/icons"
 import { Button } from "@/components/ui/button"
 
 export default function Hero() {
@@ -21,38 +20,11 @@ export default function Hero() {
 						<br />
 						<span className='text-tertiary-text'>Infrastructure</span>
 					</h1>
-					<div className='flex flex-col items-center gap-1 text-tertiary-text text-base tracking-[-0.01em] cursor-default'>
-						<p>Replace your spreadsheets and manual hiring workflows with</p>
-						<div className='group/badges flex items-center gap-1.5'>
-							built-in{" "}
-							<Badge
-								className='group-hover/badges:bg-surface-background -me-1 ps-1.5 w-fit group-hover/badges:-rotate-2 transition-all duration-300'
-								size='small'
-								icon={<IconSearch />}
-								iconClassName='text-tertiary-text'
-							>
-								Search
-							</Badge>
-							,
-							<Badge
-								className='group-hover/badges:bg-surface-background -me-1 ps-1.5 w-fit group-hover/badges:rotate-2 transition-all duration-300'
-								size='small'
-								icon={<IconAnnouncement />}
-								iconClassName='text-tertiary-text'
-							>
-								Distribution
-							</Badge>
-							, and
-							<Badge
-								className='group-hover/badges:bg-surface-background ps-1.5 w-fit group-hover/badges:rotate-2 transition-all duration-300'
-								size='small'
-								icon={<IconCalendarCheck />}
-								iconClassName='text-tertiary-text'
-							>
-								Scheduling
-							</Badge>
-						</div>
-					</div>
+					<p className='text-tertiary-text text-lg tracking-[-0.01em] cursor-default'>
+						Replace your spreadsheets and manual hiring workflows
+						<br />
+						with built-in search, distribution, and scheduling
+					</p>
 				</div>
 				<div className='relative flex flex-col items-center gap-y-3 w-full h-[120px]'>
 					<div className='top-[22px] absolute inset-0'>

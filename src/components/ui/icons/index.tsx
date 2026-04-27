@@ -334,3 +334,31 @@ export const IconCalendar: React.FC<IconProps> = ({ className, ...props }) => {
 		</Icon>
 	)
 }
+
+export const IconBuilding: React.FC<IconProps> = ({ className, ...props }) => {
+	return (
+		<Icon className={className} viewBox='0 0 20 20' {...props}>
+			<path
+				d='M9.16699 9.16667H5.16699C4.23357 9.16667 3.76686 9.16667 3.41034 9.34832C3.09674 9.50811 2.84177 9.76308 2.68198 10.0767C2.50033 10.4332 2.50033 10.8999 2.50033 11.8333V17.5M17.5003 17.5V5.16667C17.5003 4.23325 17.5003 3.76654 17.3187 3.41002C17.1589 3.09641 16.9039 2.84144 16.5903 2.68166C16.2338 2.5 15.7671 2.5 14.8337 2.5H11.8337C10.9002 2.5 10.4335 2.5 10.077 2.68166C9.7634 2.84144 9.50844 3.09641 9.34865 3.41002C9.16699 3.76654 9.16699 4.23325 9.16699 5.16667V17.5M18.3337 17.5H1.66699M12.0837 5.83333H14.5837M12.0837 9.16667H14.5837M12.0837 12.5H14.5837'
+				stroke='currentColor'
+				strokeWidth='var(--icon-stroke-width, 1.5)'
+				strokeLinecap='round'
+				strokeLinejoin='round'
+			/>
+		</Icon>
+	)
+}
+
+export const IconClock: React.FC<IconProps> = ({ className, ...props }) => {
+	return (
+		<Icon className={className} viewBox='0 0 18 18' {...props}>
+			<path
+				d='M9 4.5V9L12 10.5M16.5 9C16.5 13.1421 13.1421 16.5 9 16.5C4.85786 16.5 1.5 13.1421 1.5 9C1.5 4.85786 4.85786 1.5 9 1.5C13.1421 1.5 16.5 4.85786 16.5 9Z'
+				stroke='currentColor'
+				strokeWidth='var(--icon-stroke-width, 1.5)'
+				strokeLinecap='round'
+				strokeLinejoin='round'
+			/>
+		</Icon>
+	)
+}
