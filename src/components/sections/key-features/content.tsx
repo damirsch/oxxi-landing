@@ -273,7 +273,7 @@ function SalaryBenchmarkContent() {
 				initial={{ opacity: 0, y: 16, scale: 0.97 }}
 				animate={{ opacity: 1, y: 0, scale: 1 }}
 				transition={{ duration: 0.5, delay: 2.6 }}
-				className='flex flex-1 pb-8 min-h-0'
+				className='flex-1 pb-8 min-h-[200px]'
 			>
 				<BarChart
 					data={SALARY_DATA}
@@ -284,7 +284,6 @@ function SalaryBenchmarkContent() {
 					suffix='k'
 					noLeftOffset
 					paddingBottom={0}
-					className='h-full'
 				/>
 			</motion.div>
 		</ChatSequence>

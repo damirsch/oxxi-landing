@@ -37,10 +37,10 @@ export default function Partners() {
 			<p className='text-tertiary-text text-sm text-center tracking-[-0.01em]'>
 				Trusted by <span className='font-semibold text-primary-text'>modern hiring teams</span>
 			</p>
-			<div className='group relative mt-8 overflow-hidden py-8'>
+			<div className='relative mt-8 overflow-hidden py-8'>
 				<div className='pointer-events-none absolute inset-y-0 left-0 z-10 w-20 bg-linear-to-r from-primary-background to-transparent' />
 				<div className='pointer-events-none absolute inset-y-0 right-0 z-10 w-20 bg-linear-to-l from-primary-background to-transparent' />
-				<div className='flex gap-14 group-hover:[animation-play-state:paused] **:[animation-play-state:inherit]'>
+				<div className='flex gap-14'>
 					<LogoStrip />
 					<LogoStrip />
 				</div>

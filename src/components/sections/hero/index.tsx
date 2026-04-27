@@ -20,7 +20,7 @@ export default function Hero() {
 						<br />
 						<span className='text-tertiary-text'>Infrastructure</span>
 					</h1>
-					<p className='text-tertiary-text text-lg tracking-[-0.01em] cursor-default'>
+					<p className='text-[17px] text-tertiary-text tracking-[-0.01em] cursor-default'>
 						Replace your spreadsheets and manual hiring workflows
 						<br />
 						with built-in search, distribution, and scheduling

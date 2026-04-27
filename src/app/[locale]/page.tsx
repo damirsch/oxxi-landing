@@ -6,6 +6,7 @@ import Hero from "@/components/sections/hero"
 import Partners from "@/components/sections/partners"
 import HowItWorks from "@/components/sections/how-it-works"
 import KeyFeatures from "@/components/sections/key-features"
+import WhyOxxi from "@/components/sections/why-oxxi"
 
 export default async function Home({ params }: { params: Promise<{ locale: string }> }) {
 	const { locale } = await params
@@ -19,6 +20,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
 				<Partners />
 				<HowItWorks />
 				<KeyFeatures />
+				<WhyOxxi />
 				<SectionWrapper className='h-40'>
 					<span></span>
 				</SectionWrapper>

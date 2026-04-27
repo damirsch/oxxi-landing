@@ -26,7 +26,7 @@ export default function HowItWorks() {
 		<SectionWrapper className='flex flex-col'>
 			<SectionHeader
 				title='From description to hire in one place'
-				description='Tell Oxxi what you need — it handles the rest'
+				description='Tell Oxxi what you need, it handles the rest'
 				badgeTitle='How It Works'
 				badgeIcon={<IconHelpCircle />}
 			/>
@@ -38,7 +38,7 @@ export default function HowItWorks() {
 						<CardHeader
 							title='Describe the role'
 							description={
-								"Tell Oxxi what you're looking for — skills,\nseniority, location, and budget. Just plain language"
+								"Tell Oxxi what you're looking for. Skills,\nseniority, location, and budget. In plain language"
 							}
 							number='01'
 						/>
@@ -170,9 +170,7 @@ export default function HowItWorks() {
 					<Card className='col-span-7 pb-0'>
 						<CardHeader
 							title='Shortlist with context'
-							description={
-								"Compare candidates side by side. Salary expectations,\nexperience, and more — all in one view"
-							}
+							description={"Compare candidates side by side. Salary \n expectations, experience, and more"}
 							number='03'
 						/>
 						<div className='relative flex mx-auto w-[95%]'>
@@ -217,13 +215,13 @@ export default function HowItWorks() {
 						<CardHeader
 							title='Take action'
 							description={
-								"Schedule interviews, reach out to candidates,\nor post a job. All without leaving the conversation"
+								"Schedule interviews, reach out to candidates, \n or post a job. All without leaving the conversation"
 							}
 							number='04'
 						/>
 						<div className='relative w-full min-h-[250px]'>
 							<Image
-								className='left-0 absolute h-full object-contain scale-104 origin-top-left pointer-events-none select-none'
+								className='left-0 absolute w-auto h-full object-contain scale-104 origin-top-left pointer-events-none select-none'
 								src='/how-it-works/candidate-card.png'
 								alt='Take action'
 								width={640}
@@ -235,7 +233,7 @@ export default function HowItWorks() {
 					<Card className='col-span-5 overflow-hidden'>
 						<CardHeader
 							title='Keep hiring memory'
-							description={"Every search, conversation, and decision stays\nstored and reusable across future roles"}
+							description={"Every search, shortlist, and decision is \n saved and reused for future roles"}
 							number='05'
 						/>
 						<div className='relative w-full min-h-[250px]'>

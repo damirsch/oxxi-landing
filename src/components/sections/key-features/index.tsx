@@ -11,18 +11,18 @@ export const CYCLE_MS = 6_000
 
 const KEY_FEATURE_ITEMS = [
 	{
-		title: "AI Candidate Search",
-		description: "Describe who you need — Oxxi finds matching profiles based on your requirements",
+		title: "AI Headhunting",
+		description: "Find top candidates or build your entire team with a single message",
 		Icon: IconCandidate,
 	},
 	{
-		title: "Job Posting",
-		description: "Create and publish roles with AI-generated drafts — edit, post, done",
+		title: "Job Distribution",
+		description: "Create a job once and publish automatically across global job boards",
 		Icon: IconJob,
 	},
 	{
 		title: "Salary Benchmarks",
-		description: "Compare rates by role, location, and seniority — make confident offers backed by real data",
+		description: "Compare salaries by role, location, and experience — real-time data",
 		Icon: IconBenchmark,
 	},
 ] as const
@@ -32,7 +32,7 @@ export default function KeyFeatures() {
 		<SectionWrapper className='flex flex-col'>
 			<SectionHeader
 				title='Everything you need to hire'
-				description='Less setup, fewer tools, faster hiring'
+				description='Public web sourcing, job distribution, salary benchmarks'
 				badgeTitle='Key Features'
 				badgeIcon={<IconKey />}
 			/>
@@ -80,8 +80,15 @@ function FeatureTabs() {
 		const observer = new IntersectionObserver(
 			([entry]) => {
 				setIsInView(entry.isIntersecting)
-				if (entry.isIntersecting && !hasStarted) {
-					startTimer = setTimeout(() => setHasStarted(true), 600)
+				if (entry.isIntersecting) {
+					startTimer = setTimeout(() => setHasStarted(true), 0)
+				} else {
+					clearTimeout(startTimer)
+					setHasStarted(false)
+					setActiveIndex(0)
+					setCycle((c) => c + 1)
+					setPinned(false)
+					elapsedRef.current = 0
 				}
 			},
 			{ threshold: 0.3 }
@@ -91,7 +98,7 @@ function FeatureTabs() {
 			observer.disconnect()
 			clearTimeout(startTimer)
 		}
-	}, [hasStarted])
+	}, [])
 
 	useEffect(() => {
 		elapsedRef.current = 0
@@ -127,7 +134,7 @@ function FeatureTabs() {
 					/>
 				))}
 			</aside>
-			{hasStarted && <FeatureContent key={hasStarted ? "active" : "idle"} activeIndex={activeIndex} />}
+			{hasStarted && <FeatureContent key={`${cycle}-${activeIndex}`} activeIndex={activeIndex} />}
 		</>
 	)
 }
@@ -142,7 +149,15 @@ interface KeyFeatureCardProps {
 	Icon: FC<IconProps>
 }
 
-function KeyFeatureCard({ title, description, isActive, isRunning, animationKey, onSelect, Icon }: KeyFeatureCardProps) {
+function KeyFeatureCard({
+	title,
+	description,
+	isActive,
+	isRunning,
+	animationKey,
+	onSelect,
+	Icon,
+}: KeyFeatureCardProps) {
 	return (
 		<button
 			type='button'
