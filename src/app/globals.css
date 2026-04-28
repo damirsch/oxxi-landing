@@ -34,7 +34,7 @@
 
   --color-danger-primary: hsl(0 85% 65%);
   --color-danger-primary-subtle: hsl(0 85% 65% / 0.07);
-  --color-success-primary: hsl(142 69% 47%);
+  --color-success-primary: hsl(140 57% 47%);
   --color-success-secondary: hsl(142 50% 80%);
   --color-attention-primary: hsl(35 96% 51%);
 
@@ -47,11 +47,27 @@
   --radius-2xl: calc(0.5rem + 8px);
 
   --animate-marquee: marquee 30s linear infinite;
+  --animate-marquee-badge-row: marquee-badge-row 68s linear infinite;
 }
 
 @keyframes marquee {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(calc(-100% - 3.5rem)); }
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(calc(-100% - 3.5rem));
+  }
+}
+
+@keyframes marquee-badge-row {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(calc(-50% - 0.3125rem));
+  }
 }
 
 @layer base {

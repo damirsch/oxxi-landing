@@ -7,6 +7,7 @@ import Partners from "@/components/sections/partners"
 import HowItWorks from "@/components/sections/how-it-works"
 import KeyFeatures from "@/components/sections/key-features"
 import WhyOxxi from "@/components/sections/why-oxxi"
+import OxxiMarquee from "@/components/sections/oxxi-marquee"
 
 export default async function Home({ params }: { params: Promise<{ locale: string }> }) {
 	const { locale } = await params
@@ -21,6 +22,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
 				<HowItWorks />
 				<KeyFeatures />
 				<WhyOxxi />
+				<OxxiMarquee />
 				<SectionWrapper className='h-40'>
 					<span></span>
 				</SectionWrapper>

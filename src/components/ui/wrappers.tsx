@@ -49,7 +49,7 @@ export function HatchedPattern({ className, style }: { className?: string; style
 export function FullWidthLine({ position = "top" }: { position?: "top" | "bottom" }) {
 	return (
 		<div
-			className={cn("absolute bg-tertiary-border h-px", position === "top" ? "top-0" : "bottom-0")}
+			className={cn("absolute bg-secondary-border h-px", position === "top" ? "top-0" : "bottom-0")}
 			style={fullWidthStyle}
 		/>
 	)

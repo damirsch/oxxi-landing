@@ -14,7 +14,7 @@ const WHY_OXXI = [
 	},
 	{
 		title: "Hiring with Oxxi",
-		description: "Search, pipeline, scheduling \u2014 all in one tab",
+		description: "Search, shortlist, and hire. All in one place",
 		image: "/why-oxxi/2.png",
 		Icon: IconCheckCircle,
 		color: "text-success-primary",
@@ -24,7 +24,7 @@ const WHY_OXXI = [
 
 export default function WhyOxxi() {
 	return (
-		<SectionWrapper className='flex flex-col'>
+		<SectionWrapper className='flex flex-col pb-10'>
 			<SectionHeader
 				title={"One workspace instead of\nendless disconnected tools"}
 				badgeTitle='Why Oxxi'
@@ -46,7 +46,7 @@ export default function WhyOxxi() {
 							</span>
 						</div>
 						<Image
-							className='border border-primary-border rounded-[14px] object-contain pointer-events-none select-none'
+							className='shadow-[0_2px_8px_0_rgba(0,0,0,0.04)] border border-primary-border rounded-[14px] object-contain pointer-events-none select-none'
 							src={item.image}
 							alt={item.title}
 							width={520}
