@@ -9,7 +9,7 @@ import {
 } from "@/components/ui/icons"
 import { Badge } from "@/components/ui/badge"
 import SectionHeader from "@/components/ui/section-header"
-import { FullWidthLine, SectionWrapper } from "@/components/ui/wrappers"
+import { BgWrapper, FullWidthLine, SectionWrapper } from "@/components/ui/wrappers"
 import { cn } from "@/lib/utils"
 import Image from "next/image"
 
@@ -33,7 +33,7 @@ export default function HowItWorks() {
 			<div className='relative py-px'>
 				<FullWidthLine position='top' />
 				<FullWidthLine position='bottom' />
-				<div className='relative gap-2 grid grid-cols-12 bg-overlay-subtle p-2 rounded-[20px] outline outline-secondary-border'>
+				<BgWrapper className='grid grid-cols-12'>
 					<Card className='col-span-12'>
 						<CardHeader
 							title='Describe the role'
@@ -247,7 +247,7 @@ export default function HowItWorks() {
 							/>
 						</div>
 					</Card>
-				</div>
+				</BgWrapper>
 			</div>
 		</SectionWrapper>
 	)

@@ -2,12 +2,7 @@ import { setRequestLocale } from "next-intl/server"
 import { Header } from "@/components/shared/header"
 import { SectionWrapper } from "@/components/ui/wrappers"
 import type { Locale } from "@/i18n/routing"
-import Hero from "@/components/sections/hero"
-import Partners from "@/components/sections/partners"
-import HowItWorks from "@/components/sections/how-it-works"
-import KeyFeatures from "@/components/sections/key-features"
-import WhyOxxi from "@/components/sections/why-oxxi"
-import OxxiMarquee from "@/components/sections/oxxi-marquee"
+import { Hero, HowItWorks, KeyFeatures, OxxiMarquee, Partners, Pricing, WhyOxxi } from "@/components/sections"
 
 export default async function Home({ params }: { params: Promise<{ locale: string }> }) {
 	const { locale } = await params
@@ -23,6 +18,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
 				<KeyFeatures />
 				<WhyOxxi />
 				<OxxiMarquee />
+				<Pricing />
 				<SectionWrapper className='h-40'>
 					<span></span>
 				</SectionWrapper>

@@ -9,7 +9,7 @@ import { cn } from "@/lib/utils"
 
 export function FeatureContent({ activeIndex }: { activeIndex: number }) {
 	return (
-		<div className='relative flex-1 px-10 min-w-0'>
+		<div className='relative flex-1 px-10 border border-secondary-border rounded-[14px] min-w-0'>
 			<AnimatePresence mode='wait'>
 				<motion.div
 					key={activeIndex}

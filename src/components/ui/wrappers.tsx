@@ -15,6 +15,19 @@ export function SectionWrapper({ children, className }: SectionWrapperProps) {
 	)
 }
 
+export function BgWrapper({ children, className }: SectionWrapperProps) {
+	return (
+		<div
+			className={cn(
+				"relative flex gap-2 bg-overlay-subtle p-2 rounded-[20px] outline outline-secondary-border",
+				className
+			)}
+		>
+			{children}
+		</div>
+	)
+}
+
 const fullWidthStyle = {
 	left: "calc(-50vw + 50%)",
 	right: "calc(-50vw + 50%)",

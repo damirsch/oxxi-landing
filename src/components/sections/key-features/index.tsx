@@ -3,7 +3,7 @@
 import { useCallback, useEffect, useRef, useState, type FC } from "react"
 import { IconBenchmark, IconCandidate, IconJob, IconKey, type IconProps } from "@/components/ui/icons"
 import SectionHeader from "@/components/ui/section-header"
-import { FullWidthLine, SectionWrapper } from "@/components/ui/wrappers"
+import { BgWrapper, FullWidthLine, SectionWrapper } from "@/components/ui/wrappers"
 import { cn } from "@/lib/utils"
 import { FeatureContent } from "./content"
 
@@ -39,9 +39,9 @@ export default function KeyFeatures() {
 			<div className='relative py-px'>
 				<FullWidthLine position='top' />
 				<FullWidthLine position='bottom' />
-				<div className='relative flex gap-2 bg-overlay-subtle p-2 rounded-[16px] outline outline-secondary-border'>
+				<BgWrapper className='rounded-[16px]'>
 					<FeatureTabs />
-				</div>
+				</BgWrapper>
 			</div>
 		</SectionWrapper>
 	)
