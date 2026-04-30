@@ -85,6 +85,13 @@
   }
 }
 
+@utility absolute-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+}
+
 @utility shadow-card {
   box-shadow:
     0 46px 28px rgba(0, 0, 0, 0.02),
