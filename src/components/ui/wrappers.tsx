@@ -59,10 +59,22 @@ export function HatchedPattern({ className, style }: { className?: string; style
 	)
 }
 
-export function FullWidthLine({ position = "top" }: { position?: "top" | "bottom" }) {
+export function FullWidthLine({
+	position = "top",
+	variant = "solid",
+}: {
+	position?: "top" | "bottom"
+	variant?: "solid" | "gradient"
+}) {
 	return (
 		<div
-			className={cn("absolute bg-secondary-border h-px", position === "top" ? "top-0" : "bottom-0")}
+			className={cn(
+				"absolute h-px",
+				position === "top" ? "top-0" : "bottom-0",
+				variant === "solid" && "bg-secondary-border",
+				variant === "gradient" &&
+					"bg-[linear-gradient(90deg,rgba(255,255,255,0)_0%,rgba(255,255,255,0.15)_50%,rgba(255,255,255,0)_100%)]"
+			)}
 			style={fullWidthStyle}
 		/>
 	)

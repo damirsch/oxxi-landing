@@ -9,7 +9,7 @@ const FAQ_ITEMS = [
 			"No. Oxxi starts sourcing from the public web from day one. Existing data simply makes it stronger over time",
 	},
 	{
-		question: "Does it replace our ATS?",
+		question: "Does it replace ATS?",
 		answer:
 			"Yes. Oxxi includes a built-in ATS, along with sourcing, outreach, scheduling, salary intelligence, and hiring memory",
 	},
@@ -22,7 +22,7 @@ const FAQ_ITEMS = [
 		answer: "Yes. Oxxi is designed to handle multiple roles and clients with shared hiring memory",
 	},
 	{
-		question: "Is our data private?",
+		question: "Is my data private?",
 		answer: "Yes. Your data is always private and is never used for model training.",
 	},
 ] as const

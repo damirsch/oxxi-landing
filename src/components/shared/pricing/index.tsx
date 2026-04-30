@@ -4,7 +4,7 @@ import { PRICING_PLANS } from "./constants"
 import { PricingEnterpriseBanner } from "./enterprise-banner"
 import { PricingPlanCard } from "./plan-card"
 
-export default function Pricing() {
+export function Pricing() {
 	return (
 		<SectionWrapper className='flex flex-col'>
 			<SectionHeader title='Pricing plans' description='Pick a plan that fits your hiring volume' />

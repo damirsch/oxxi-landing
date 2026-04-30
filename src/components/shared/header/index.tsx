@@ -4,8 +4,8 @@ import { useState, useEffect } from "react"
 import { cn } from "@/lib/utils"
 import { useTranslations } from "next-intl"
 import { Link } from "@/i18n/navigation"
-import { Button } from "../ui/button"
-import { Logo } from "../ui/icons/logo"
+import { Button } from "../../ui/button"
+import { Logo } from "../../ui/icons/logo"
 
 const NAV_KEYS = ["features", "howItWorks", "pricing", "faq", "api"] as const
 

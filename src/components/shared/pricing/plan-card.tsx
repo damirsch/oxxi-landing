@@ -3,6 +3,7 @@ import { buttonVariants } from "@/components/ui/button-variants"
 import { cn } from "@/lib/utils"
 import type { PricingPlan } from "./constants"
 import { PricingFeatureRow } from "./feature-row"
+import Link from "next/link"
 
 export function PricingPlanCard({ plan }: { plan: PricingPlan }) {
 	return (
@@ -31,9 +32,12 @@ export function PricingPlanCard({ plan }: { plan: PricingPlan }) {
 				<span className='ml-0.5 text-tertiary-text text-sm'>/month</span>
 			</div>
 
-			<a href='#' className={cn(buttonVariants({ variant: plan.ctaVariant, size: "lg" }), "w-full h-10 no-underline")}>
+			<Link
+				href='#'
+				className={cn(buttonVariants({ variant: plan.ctaVariant, size: "lg" }), "w-full h-10 no-underline")}
+			>
 				{plan.ctaLabel}
-			</a>
+			</Link>
 
 			<div className='flex flex-col flex-1 gap-3.5 mt-6'>
 				{plan.features.map((feature, index) => (

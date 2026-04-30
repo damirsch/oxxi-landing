@@ -31,7 +31,12 @@ export function FAQItem({ question, answer }: { question: string; answer: string
 					open ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
 				)}
 			>
-				<p className='pt-2 min-h-0 overflow-hidden text-[15px] text-tertiary-text text-left leading-[1.4] tracking-[-0.01em]'>
+				<p
+					className={cn(
+						"min-h-0 overflow-hidden text-[15px] text-tertiary-text text-left leading-[1.4] tracking-[-0.01em] transition-all duration-200",
+						open ? "pt-2" : "pt-0"
+					)}
+				>
 					{answer}
 				</p>
 			</div>

@@ -1,4 +1,3 @@
-import Pricing from "./pricing"
 import Hero from "./hero"
 import Partners from "./partners"
 import HowItWorks from "./how-it-works"
@@ -8,4 +7,4 @@ import OxxiMarquee from "./oxxi-marquee"
 import CTA from "./cta"
 import FAQ from "./faq"
 
-export { Pricing, Hero, Partners, HowItWorks, KeyFeatures, WhyOxxi, OxxiMarquee, CTA, FAQ }
+export { Hero, Partners, HowItWorks, KeyFeatures, WhyOxxi, OxxiMarquee, CTA, FAQ }
