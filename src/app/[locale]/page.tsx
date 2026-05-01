@@ -11,7 +11,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
 	return (
 		<>
 			<Header />
-			<main className='flex-1'>
+			<main className='flex-1 pt-14 md:pt-20'>
 				<Hero />
 				<Partners />
 				<HowItWorks />
