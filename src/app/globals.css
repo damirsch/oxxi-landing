@@ -48,6 +48,8 @@
 
   --animate-marquee: marquee 30s linear infinite;
   --animate-marquee-badge-row: marquee-badge-row 68s linear infinite;
+
+  --breakpoint-2xs: 425px;
 }
 
 @keyframes marquee {
@@ -80,6 +82,8 @@
     font-weight: 400;
     background: var(--color-primary-background);
     color: var(--color-primary-text);
+    overflow-x: clip;
+
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }

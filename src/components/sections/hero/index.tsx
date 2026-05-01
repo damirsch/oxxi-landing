@@ -5,25 +5,24 @@ import { Button } from "@/components/ui/button"
 
 export default function Hero() {
 	return (
-		<SectionWrapper className='relative pt-[60px]'>
-			<article className='flex flex-col gap-y-9'>
+		<SectionWrapper className='relative pt-[40px] md:pt-[60px]'>
+			<article className='flex flex-col gap-y-6 sm:gap-y-8 px-3 md:px-0'>
 				<div className='flex flex-col items-center gap-3 text-center'>
-					<Badge>
+					<Badge className='text-[13px] sm:text-sm'>
 						<div
 							className='bg-[linear-gradient(135deg,#5C69F6_-55%,#48B0EC_50%,#8DDFFF_100%)] rounded-full size-2 shrink-0'
 							aria-hidden
 						/>
 						Headhunting on autopilot
 					</Badge>
-					<h1 className='font-heading font-semibold text-[58px] leading-[1.1] tracking-tight'>
+					<h1 className='font-heading font-semibold text-[32px] xl:text-[58px] sm:text-5xl leading-[1.1] tracking-tight'>
 						Oxxi. Your Hiring
 						<br />
 						<span className='text-tertiary-text'>Infrastructure</span>
 					</h1>
-					<p className='text-[17px] text-tertiary-text tracking-[-0.01em] cursor-default'>
+					<p className='text-[13px] text-tertiary-text sm:text-[15px] xl:text-[17px] tracking-[-0.01em] cursor-default'>
 						Replace your spreadsheets and manual hiring workflows
-						<br />
-						with built-in search, distribution, and scheduling
+						<br className='hidden 2xs:block' /> with built-in search, distribution, and scheduling
 					</p>
 				</div>
 				<div className='relative flex flex-col items-center gap-y-3 w-full h-[120px]'>
@@ -34,12 +33,12 @@ export default function Hero() {
 					</div>
 					<div className='z-10 relative flex gap-3'>
 						<Button
-							className='bg-surface-background hover:bg-[#fbfbfb] shadow-[0_4px_6px_0_rgba(0,0,0,0.04)] px-5 h-11 text-[15px]'
+							className='bg-surface-background hover:bg-[#fbfbfb] shadow-[0_4px_6px_0_rgba(0,0,0,0.04)] px-4 sm:px-5 h-10 sm:h-11 sm:text-[15px] text-sm'
 							variant='secondary'
 						>
 							See how it works
 						</Button>
-						<Button className='px-5 h-11 text-[15px]'>Start for free</Button>
+						<Button className='px-4 sm:px-5 h-10 sm:h-11 sm:text-[15px] text-sm'>Start for free</Button>
 					</div>
 				</div>
 			</article>

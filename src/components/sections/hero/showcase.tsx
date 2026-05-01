@@ -25,10 +25,9 @@ export function HeroShowcase() {
 	return (
 		<div className='relative overflow-visible'>
 			<motion.div variants={container} initial='hidden' animate='visible'>
-				{/* Product screenshot */}
 				<div className='relative'>
 					<Image
-						className='rounded-[16px] rounded-b-none w-full h-auto select-none pointer-events-none'
+						className='xl:rounded-[16px] rounded-b-none w-full h-auto pointer-events-none select-none'
 						src='/hero/product.png'
 						alt='Product'
 						width={1200}
@@ -36,7 +35,7 @@ export function HeroShowcase() {
 						priority
 						draggable={false}
 					/>
-					<div className='absolute -inset-px bg-linear-to-b from-primary-border to-tertiary-border rounded-[17px] rounded-b-none gradient-outline pointer-events-none' />
+					<div className='absolute -inset-px bg-linear-to-b from-primary-border to-tertiary-border xl:rounded-[17px] rounded-b-none gradient-outline pointer-events-none' />
 					<div
 						className='-bottom-0.5 z-10 absolute inset-0 pointer-events-none'
 						style={{
@@ -46,11 +45,10 @@ export function HeroShowcase() {
 					/>
 				</div>
 
-				{/* Right card — appears first, further away so subtler motion */}
-				<motion.div variants={item} className='top-[18%] -right-[12%] z-20 absolute w-[26%]'>
+				<motion.div variants={item} className='hidden xl:block top-[18%] -right-[12%] z-20 absolute w-[26%]'>
 					<ParallaxCard className='rotate-8' speed={25} floatDuration={4} floatDistance={3}>
 						<Image
-							className='shadow-card border border-secondary-border rounded-xl w-full h-auto select-none pointer-events-none'
+							className='shadow-card border border-secondary-border rounded-xl w-full h-auto pointer-events-none select-none'
 							src='/hero/card-1.png'
 							alt='Sidebar'
 							width={903}
@@ -60,11 +58,10 @@ export function HeroShowcase() {
 					</ParallaxCard>
 				</motion.div>
 
-				{/* Left card — appears second, closer so stronger motion */}
-				<motion.div variants={item} className='top-[34%] -left-[8%] z-20 absolute w-[33%]'>
+				<motion.div variants={item} className='hidden xl:block top-[34%] -left-[8%] z-20 absolute w-[33%]'>
 					<ParallaxCard className='-rotate-8' speed={70} floatDuration={4.5} floatDistance={7}>
 						<Image
-							className='shadow-card border border-secondary-border rounded-xl w-full h-auto select-none pointer-events-none'
+							className='shadow-card border border-secondary-border rounded-xl w-full h-auto pointer-events-none select-none'
 							src='/hero/card-2.png'
 							alt='Job card'
 							width={1044}
@@ -73,7 +70,7 @@ export function HeroShowcase() {
 						/>
 					</ParallaxCard>
 				</motion.div>
-				{/* Input — appears after cards */}
+
 				<motion.div
 					variants={item}
 					className='z-20 relative bg-surface-background/20 shadow-hero-input backdrop-blur-md mx-auto -mt-20 p-3 border border-secondary-border rounded-[28px] w-full max-w-[660px]'
