@@ -23,7 +23,7 @@ function LogoStrip() {
 					key={logo.alt}
 					src={logo.src}
 					alt={logo.alt}
-					className='opacity-40 grayscale w-auto h-6 sm:h-7 object-contain'
+					className='opacity-80 w-auto h-6 sm:h-7 object-contain'
 					draggable={false}
 				/>
 			))}

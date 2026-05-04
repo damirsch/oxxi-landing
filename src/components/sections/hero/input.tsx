@@ -49,7 +49,7 @@ export function HeroInput({ className }: { className?: string }) {
 				className
 			)}
 		>
-			<div className='flex items-center gap-0 ps-4 pe-20 pt-3.5 pb-6 min-h-6 text-[15px] tracking-[-0.008em]'>
+			<div className='flex items-center gap-0 ps-4 pe-4 pt-3.5 pb-5 sm:pb-6 sm:text-[15px] text-sm tracking-[-0.008em]'>
 				<span className='bg-tertiary-text w-[1] h-[1.1em] animate-blink shrink-0' />
 				<div className='relative flex-1 h-[1.4em] overflow-hidden'>
 					<AnimatePresence initial={false} mode='popLayout'>
@@ -81,7 +81,7 @@ export function HeroInput({ className }: { className?: string }) {
 					<span className={cn(roundPill({ variant: "icon" }), "border-none")} aria-hidden>
 						<IconMicrophone />
 					</span>
-					<span className={cn(roundPill({ variant: "iconAccent" }), "opacity-40")} aria-hidden>
+					<span className={cn(roundPill({ variant: "iconAccent" }), "opacity-40 ")} aria-hidden>
 						<IconArrowUp strokeWidth={2} />
 					</span>
 				</div>

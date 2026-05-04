@@ -71,11 +71,10 @@ export function HeroShowcase() {
 					</ParallaxCard>
 				</motion.div>
 
-				<motion.div
-					variants={item}
-					className='z-20 relative bg-surface-background/20 shadow-hero-input backdrop-blur-md mx-auto -mt-20 p-3 border border-secondary-border rounded-[28px] w-full max-w-[660px]'
-				>
-					<HeroInput />
+				<motion.div variants={item} className='z-20 relative mx-auto -mt-20 px-5 w-full max-w-[700px]'>
+					<div className='bg-surface-background/20 shadow-hero-input backdrop-blur-md p-2 sm:p-3 border border-secondary-border rounded-[26px] sm:rounded-[28px]'>
+						<HeroInput />
+					</div>
 				</motion.div>
 			</motion.div>
 		</div>
