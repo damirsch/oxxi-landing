@@ -27,7 +27,9 @@ export default function Partners() {
 				<FullWidthLine position='top' />
 				<FullWidthLine position='bottom' />
 				<div className='relative flex flex-wrap justify-center items-center gap-4 sm:gap-12 px-6 py-11 border-secondary-border border-b w-full'>
-					<Badge className='top-0 left-1/2 absolute rounded-[6px] h-8 -translate-x-1/2 -translate-y-1/2'>Brands</Badge>
+					<Badge className='top-0 left-1/2 absolute rounded-[6px] h-8 -translate-x-1/2 -translate-y-1/2'>
+						Hiring teams
+					</Badge>
 					{brandPartnerLogos.map((logo) => (
 						// eslint-disable-next-line @next/next/no-img-element
 						<img
@@ -41,7 +43,7 @@ export default function Partners() {
 				</div>
 				<div className='relative flex flex-wrap justify-center items-center gap-4 sm:gap-12 px-6 py-11 w-full'>
 					<Badge className='top-0 left-1/2 absolute rounded-[6px] h-8 -translate-x-1/2 -translate-y-1/2'>
-						Agencies
+						Tech partners
 					</Badge>
 					{agencyPartnerLogos.map((logo) => (
 						<div key={logo.alt} className='flex justify-center items-center h-5 sm:h-6'>
