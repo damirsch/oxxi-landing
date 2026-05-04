@@ -1,7 +1,7 @@
 "use client"
 
 import { useCallback, useEffect, useRef, useState, type FC } from "react"
-import { IconBenchmark, IconCandidate, IconJob, IconKey, type IconProps } from "@/components/ui/icons"
+import { IconBenchmark, IconCandidate, IconJob, IconKey, IconTool2, type IconProps } from "@/components/ui/icons"
 import SectionHeader from "@/components/ui/section-header"
 import { BgWrapper, FullWidthLine, SectionWrapper } from "@/components/ui/wrappers"
 import { cn } from "@/lib/utils"
@@ -34,7 +34,7 @@ export default function KeyFeatures() {
 				title='Everything you need to hire'
 				description='Public web sourcing, job distribution, salary benchmarks'
 				badgeTitle='Key Features'
-				badgeIcon={<IconKey />}
+				badgeIcon={<IconTool2 />}
 			/>
 			<div className='relative py-px'>
 				<FullWidthLine position='top' />

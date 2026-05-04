@@ -46,6 +46,8 @@ export function Footer() {
 						items={[
 							{ name: "LinkedIn", href: "/" },
 							{ name: "X / Twitter", href: "/" },
+							{ name: "Instagram", href: "/" },
+							{ name: "GitHub", href: "/" },
 						]}
 					/>
 				</div>
