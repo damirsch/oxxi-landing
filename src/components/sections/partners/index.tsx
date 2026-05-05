@@ -14,7 +14,7 @@ export const brandPartnerLogos = [
 
 export const agencyPartnerLogos = [
 	{ src: "/partner-logos/Veritone.svg", alt: "Veritone" },
-	{ src: "/partner-logos/Broadbean.svg", alt: "Broadbean" },
+	{ src: "/partner-logos/broadbean.svg", alt: "Broadbean" },
 ] as const
 
 export default function Partners() {
@@ -31,14 +31,18 @@ export default function Partners() {
 						Hiring teams
 					</Badge>
 					{brandPartnerLogos.map((logo) => (
-						// eslint-disable-next-line @next/next/no-img-element
-						<img
-							key={logo.alt}
-							src={logo.src}
-							alt={logo.alt}
-							className='w-auto h-5 sm:h-6 object-contain'
-							draggable={false}
-						/>
+						<div key={logo.alt} className='flex justify-center items-center h-5 sm:h-6'>
+							{/* eslint-disable-next-line @next/next/no-img-element */}
+							<img
+								src={logo.src}
+								alt={logo.alt}
+								className={cn(
+									"w-auto object-contain",
+									logo.alt === "Baraton" || logo.alt === "Delivery" ? "h-10" : "h-full"
+								)}
+								draggable={false}
+							/>
+						</div>
 					))}
 				</div>
 				<div className='relative flex flex-wrap justify-center items-center gap-4 sm:gap-12 px-6 py-11 w-full'>
