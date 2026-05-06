@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect, useCallback } from "react"
+import { useState, useEffect, useCallback, useRef } from "react"
 import { cn } from "@/lib/utils"
 import { useTranslations } from "next-intl"
 import { Link } from "@/i18n/navigation"
@@ -45,6 +45,7 @@ function BurgerIcon({ open }: { open: boolean }) {
 export function Header() {
 	const [scrolled, setScrolled] = useState(false)
 	const [menuOpen, setMenuOpen] = useState(false)
+	const scrollLockY = useRef(0)
 	const t = useTranslations("header")
 
 	useEffect(() => {
@@ -55,13 +56,26 @@ export function Header() {
 	}, [])
 
 	useEffect(() => {
-		if (menuOpen) {
-			document.body.style.overflow = "hidden"
-		} else {
-			document.body.style.overflow = ""
-		}
+		if (!menuOpen) return
+		const html = document.documentElement
+		const body = document.body
+		scrollLockY.current = window.scrollY
+		html.style.overflow = "hidden"
+		body.style.overflow = "hidden"
+		body.style.position = "fixed"
+		body.style.top = `-${scrollLockY.current}px`
+		body.style.left = "0"
+		body.style.right = "0"
+		body.style.width = "100%"
 		return () => {
-			document.body.style.overflow = ""
+			html.style.overflow = ""
+			body.style.overflow = ""
+			body.style.position = ""
+			body.style.top = ""
+			body.style.left = ""
+			body.style.right = ""
+			body.style.width = ""
+			window.scrollTo(0, scrollLockY.current)
 		}
 	}, [menuOpen])
 
@@ -78,7 +92,7 @@ export function Header() {
 					boxShadow: scrolled ? "0 8px 24px 0 transparent" : "0 8px 24px 12px var(--color-primary-background)",
 				}}
 			>
-				<div className='relative flex justify-between items-center mx-auto px-4 md:px-2 max-w-[1200px] h-full'>
+				<div className='relative flex justify-between items-center mx-auto px-5 xl:px-2 max-w-[1200px] h-full'>
 					<Link href='/' className='flex items-center gap-2'>
 						<Logo className='size-5 md:size-6' />
 						<span className='font-bold text-primary-text text-lg md:text-xl leading-none tracking-tight'>OXXI</span>
@@ -115,7 +129,7 @@ export function Header() {
 
 			<div
 				className={cn(
-					"md:hidden top-14 right-0 bottom-0 left-0 z-50 fixed bg-primary-background transition-transform duration-300 ease-in-out",
+					"md:hidden top-14 right-0 bottom-0 left-0 z-50 fixed flex flex-col justify-between bg-primary-background transition-transform duration-300 ease-in-out",
 					menuOpen ? "translate-x-0" : "translate-x-full"
 				)}
 			>
@@ -131,7 +145,7 @@ export function Header() {
 						</a>
 					))}
 				</nav>
-				<div className='flex flex-col gap-2 px-4'>
+				<div className='flex gap-2 px-4 pb-4'>
 					<Button variant='secondary' className='w-full h-10' onClick={closeMenu}>
 						{t("login")}
 					</Button>

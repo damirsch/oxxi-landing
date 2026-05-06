@@ -15,7 +15,7 @@ export default function Hero() {
 						/>
 						Headhunting on autopilot
 					</Badge>
-					<h1 className='font-heading font-semibold text-[32px] xl:text-[58px] sm:text-5xl leading-[1.1] tracking-tight'>
+					<h1 className='font-heading font-semibold xl:text-[58px] text-4xl sm:text-5xl leading-[1.1] tracking-tight'>
 						Oxxi. Your Hiring
 						<br />
 						<span className='text-tertiary-text'>Infrastructure</span>
@@ -25,7 +25,7 @@ export default function Hero() {
 						<br className='hidden 2xs:block' /> with built-in search, distribution, and scheduling
 					</p>
 				</div>
-				<div className='relative flex flex-col items-center gap-y-3 w-full h-[120px]'>
+				<div className='relative flex flex-col items-center gap-y-3 w-full h-[90px] md:h-[120px]'>
 					<div className='top-[22px] absolute inset-0'>
 						<FullWidthLine position='top' />
 						<FullWidthLine position='bottom' />

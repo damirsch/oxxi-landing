@@ -8,7 +8,10 @@ interface SectionWrapperProps {
 export function SectionWrapper({ children, className }: SectionWrapperProps) {
 	return (
 		<section
-			className={cn("gap-y-8 mx-auto pt-20 border-tertiary-border border-r border-l w-full max-w-[1200px]", className)}
+			className={cn(
+				"gap-y-7 md:gap-y-8 mx-auto pt-14 md:pt-20 border-tertiary-border border-r border-l w-full max-w-[1200px]",
+				className
+			)}
 		>
 			{children}
 		</section>
@@ -62,9 +65,11 @@ export function HatchedPattern({ className, style }: { className?: string; style
 export function FullWidthLine({
 	position = "top",
 	variant = "solid",
+	className,
 }: {
 	position?: "top" | "bottom"
 	variant?: "solid" | "gradient"
+	className?: string
 }) {
 	return (
 		<div
@@ -73,7 +78,8 @@ export function FullWidthLine({
 				position === "top" ? "top-0" : "bottom-0",
 				variant === "solid" && "bg-secondary-border",
 				variant === "gradient" &&
-					"bg-[linear-gradient(90deg,rgba(255,255,255,0)_0%,rgba(255,255,255,0.15)_50%,rgba(255,255,255,0)_100%)]"
+					"bg-[linear-gradient(90deg,rgba(255,255,255,0)_0%,rgba(255,255,255,0.15)_50%,rgba(255,255,255,0)_100%)]",
+				className
 			)}
 			style={fullWidthStyle}
 		/>

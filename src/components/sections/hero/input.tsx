@@ -49,7 +49,7 @@ export function HeroInput({ className }: { className?: string }) {
 				className
 			)}
 		>
-			<div className='flex items-center gap-0 ps-4 pe-4 pt-3.5 pb-5 sm:pb-6 sm:text-[15px] text-sm tracking-[-0.008em]'>
+			<div className='flex items-center gap-0 ps-4 pe-4 pt-3.5 pb-4 sm:pb-6 text-[13px] sm:text-[15px] tracking-[-0.008em]'>
 				<span className='bg-tertiary-text w-[1] h-[1.1em] animate-blink shrink-0' />
 				<div className='relative flex-1 h-[1.4em] overflow-hidden'>
 					<AnimatePresence initial={false} mode='popLayout'>
@@ -67,21 +67,21 @@ export function HeroInput({ className }: { className?: string }) {
 				</div>
 			</div>
 			<div className='flex justify-between items-center px-3'>
-				<div className='flex items-center gap-2'>
-					<span className={roundPill({ variant: "icon" })} aria-hidden>
+				<div className='flex items-center gap-0 sm:gap-2'>
+					<span className={cn(roundPill({ variant: "icon" }), "scale-90 sm:scale-100")} aria-hidden>
 						<IconPlus strokeWidth={1.3} />
 					</span>
-					<span className={roundPill({ variant: "secondary" })} aria-hidden>
+					<span className={cn(roundPill({ variant: "secondary" }), "scale-90 sm:scale-100")} aria-hidden>
 						<IconPlugs />
 						Add
 						<IconChevronUp className='-rotate-180 transition-transform duration-200' />
 					</span>
 				</div>
-				<div className='flex items-center gap-2'>
-					<span className={cn(roundPill({ variant: "icon" }), "border-none")} aria-hidden>
+				<div className='flex items-center gap-1 sm:gap-2'>
+					<span className={cn(roundPill({ variant: "icon" }), "border-none scale-90 sm:scale-100")} aria-hidden>
 						<IconMicrophone />
 					</span>
-					<span className={cn(roundPill({ variant: "iconAccent" }), "opacity-40 ")} aria-hidden>
+					<span className={cn(roundPill({ variant: "iconAccent" }), "opacity-40 scale-90 sm:scale-100")} aria-hidden>
 						<IconArrowUp strokeWidth={2} />
 					</span>
 				</div>
