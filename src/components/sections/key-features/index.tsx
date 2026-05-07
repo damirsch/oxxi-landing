@@ -1,60 +1,20 @@
 "use client"
-
 import { useCallback, useEffect, useRef, useState, type FC } from "react"
-import { IconBenchmark, IconCandidate, IconJob, IconKey, IconTool2, type IconProps } from "@/components/ui/icons"
+import { IconTool2, type IconProps } from "@/components/ui/icons"
 import SectionHeader from "@/components/ui/section-header"
 import { BgWrapper, FullWidthLine, SectionWrapper } from "@/components/ui/wrappers"
 import { cn } from "@/lib/utils"
 import { FeatureContent } from "./content"
+import { CYCLE_MS, KEY_FEATURE_ITEMS } from "./constants"
 
-export const CYCLE_MS = 6_000
-
-const KEY_FEATURE_ITEMS = [
-	{
-		title: "AI Headhunting",
-		description: "Find top candidates or build your entire team with a single message",
-		Icon: IconCandidate,
-	},
-	{
-		title: "Job Distribution",
-		description: "Create a job once and publish automatically across global job boards",
-		Icon: IconJob,
-	},
-	{
-		title: "Salary Benchmarks",
-		description: "Compare salaries by role, location, and experience — real-time data",
-		Icon: IconBenchmark,
-	},
-] as const
-
-export default function KeyFeatures() {
-	return (
-		<SectionWrapper className='flex flex-col'>
-			<SectionHeader
-				title='Everything you need to hire'
-				description='Public web sourcing, job distribution, salary benchmarks'
-				badgeTitle='Key Features'
-				badgeIcon={<IconTool2 />}
-			/>
-			<div className='relative py-px'>
-				<FullWidthLine position='top' />
-				<FullWidthLine position='bottom' />
-				<BgWrapper className='rounded-[16px]'>
-					<FeatureTabs />
-				</BgWrapper>
-			</div>
-		</SectionWrapper>
-	)
-}
-
-function FeatureTabs() {
+function useFeatureTabCycle() {
 	const count = KEY_FEATURE_ITEMS.length
 	const [activeIndex, setActiveIndex] = useState(0)
 	const [cycle, setCycle] = useState(0)
 	const [isInView, setIsInView] = useState(false)
 	const [hasStarted, setHasStarted] = useState(false)
 	const [pinned, setPinned] = useState(false)
-	const asideRef = useRef<HTMLElement>(null)
+	const inViewRootRef = useRef<HTMLDivElement>(null)
 	const timerRef = useRef<ReturnType<typeof setTimeout>>(undefined)
 	const elapsedRef = useRef(0)
 	const lastTickRef = useRef(0)
@@ -74,7 +34,7 @@ function FeatureTabs() {
 	)
 
 	useEffect(() => {
-		const el = asideRef.current
+		const el = inViewRootRef.current
 		if (!el) return
 		let startTimer: ReturnType<typeof setTimeout> | undefined
 		const observer = new IntersectionObserver(
@@ -91,7 +51,7 @@ function FeatureTabs() {
 					elapsedRef.current = 0
 				}
 			},
-			{ threshold: 0.3 }
+			{ threshold: 0, rootMargin: "64px 0px 96px 0px" }
 		)
 		observer.observe(el)
 		return () => {
@@ -118,24 +78,51 @@ function FeatureTabs() {
 		}
 	}, [isInView, hasStarted, activeIndex, count, cycle, pinned])
 
+	return { inViewRootRef, activeIndex, cycle, hasStarted, isInView, select }
+}
+
+export default function KeyFeatures() {
+	const { inViewRootRef, activeIndex, cycle, hasStarted, isInView, select } = useFeatureTabCycle()
+
 	return (
-		<>
-			<aside ref={asideRef} className='flex flex-col gap-1.5 max-w-[340px]'>
-				{KEY_FEATURE_ITEMS.map((feature, index) => (
-					<KeyFeatureCard
-						key={feature.title}
-						title={feature.title}
-						description={feature.description}
-						Icon={feature.Icon as FC<IconProps>}
-						isActive={index === activeIndex}
-						isRunning={isInView && hasStarted}
-						animationKey={`${activeIndex}-${cycle}`}
-						onSelect={() => select(index)}
-					/>
-				))}
-			</aside>
-			{hasStarted && <FeatureContent key={`${cycle}-${activeIndex}`} activeIndex={activeIndex} />}
-		</>
+		<SectionWrapper className='flex flex-col'>
+			<SectionHeader
+				title='Everything you need to hire'
+				description='Public web sourcing, job distribution, salary benchmarks'
+				badgeTitle='Key Features'
+				badgeIcon={<IconTool2 />}
+			/>
+			<div className='relative py-px'>
+				<FullWidthLine position='top' />
+				<FullWidthLine position='bottom' />
+				<BgWrapper
+					ref={inViewRootRef}
+					className='xl:flex-row lg:flex-col flex-col-reverse max-lg:p-0 rounded-none lg:rounded-[16px]'
+				>
+					<aside className='flex lg:flex-row flex-col xl:flex-col gap-1.5 p-5 lg:p-0 max-lg:border-primary-border max-lg:border-t xl:max-w-[340px]'>
+						{KEY_FEATURE_ITEMS.map((feature, index) => (
+							<KeyFeatureCard
+								key={feature.title}
+								title={feature.title}
+								description={feature.description}
+								Icon={feature.Icon as FC<IconProps>}
+								isActive={index === activeIndex}
+								isRunning={isInView && hasStarted}
+								animationKey={`${activeIndex}-${cycle}`}
+								onSelect={() => select(index)}
+							/>
+						))}
+					</aside>
+					<div className='relative xl:flex-1 px-5 lg:px-10 lg:border border-secondary-border rounded-[14px] w-full min-w-0 h-[450px] lg:h-[550px] xl:h-auto overflow-hidden'>
+						{hasStarted && (
+							<div className='flex flex-col h-full min-h-0'>
+								<FeatureContent activeIndex={activeIndex} />
+							</div>
+						)}
+					</div>
+				</BgWrapper>
+			</div>
+		</SectionWrapper>
 	)
 }
 
@@ -164,35 +151,42 @@ function KeyFeatureCard({
 			aria-pressed={isActive}
 			onClick={onSelect}
 			className={cn(
-				"flex p-9 border border-primary-border rounded-[14px] w-full text-left transition-colors",
+				"flex items-center p-4 lg:p-8 xl:p-9 border rounded-[12px] lg:rounded-[14px] w-full min-h-0 text-left transition-colors",
 				isActive
-					? "bg-surface-background select-text shadow-[0_2px_6px_0_rgba(0,0,0,0.04)]"
-					: "bg-[#F6F6F6] shadow-[0_2px_6px_0_rgba(0,0,0,0.03)] hover:bg-[#fcfcfc] cursor-pointer"
+					? "bg-surface-background select-text shadow-[0_2px_6px_0_rgba(0,0,0,0.04)] border-primary-border"
+					: "bg-white/40 lg:bg-[#F6F6F6] shadow-[0_2px_6px_0_rgba(0,0,0,0.03)] border-secondary-border hover:bg-[#fcfcfc] max-lg:py-2 max-lg:rounded-[8px] cursor-pointer"
 			)}
 		>
-			<div
-				className='flex flex-col bg-secondary-border rounded-full w-[2px] overflow-hidden select-none shrink-0'
-				aria-hidden
-			>
-				{isActive ? (
-					<div
-						key={animationKey}
-						className='bg-brand-primary rounded-full w-full'
-						style={{
-							animation: `progress-fill ${CYCLE_MS}ms linear forwards`,
-							animationPlayState: isRunning ? "running" : "paused",
-						}}
-					/>
-				) : null}
-			</div>
-			<div className='flex flex-col gap-2 px-4 py-2'>
-				<div className='flex items-center gap-2 font-semibold text-base'>
-					<Icon className={cn("size-[18px]", isActive ? "text-secondary-text" : "text-tertiary-text")} />
-					<span className={cn(isActive ? "cursor-text" : "text-secondary-text")}>{title}</span>
+			<div className='flex items-stretch w-full min-w-0'>
+				<div
+					className='flex flex-col bg-secondary-border rounded-full w-[2px] min-h-0 overflow-hidden select-none shrink-0'
+					aria-hidden
+				>
+					{isActive ? (
+						<div
+							key={animationKey}
+							className='bg-brand-primary rounded-full w-full'
+							style={{
+								animation: `progress-fill ${CYCLE_MS}ms linear forwards`,
+								animationPlayState: isRunning ? "running" : "paused",
+							}}
+						/>
+					) : null}
 				</div>
-				<p className={cn("text-[15px]", isActive ? "cursor-text text-secondary-text" : "text-tertiary-text")}>
-					{description}
-				</p>
+				<div className='flex flex-col flex-1 gap-2 px-4 py-1 lg:py-2 min-w-0'>
+					<div className='flex items-center gap-2 font-semibold text-sm lg:text-base'>
+						<Icon className={cn("size-[18px]", isActive ? "text-secondary-text" : "text-tertiary-text")} />
+						<span className={cn(isActive ? "cursor-text" : "text-secondary-text")}>{title}</span>
+					</div>
+					<p
+						className={cn(
+							"text-[13px] xl:text-[15px] lg:text-sm",
+							isActive ? "cursor-text text-secondary-text " : "text-tertiary-text max-lg:hidden"
+						)}
+					>
+						{description}
+					</p>
+				</div>
 			</div>
 		</button>
 	)

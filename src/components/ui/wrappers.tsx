@@ -1,3 +1,4 @@
+import { forwardRef } from "react"
 import { cn } from "@/lib/utils"
 
 interface SectionWrapperProps {
@@ -9,7 +10,7 @@ export function SectionWrapper({ children, className }: SectionWrapperProps) {
 	return (
 		<section
 			className={cn(
-				"gap-y-7 md:gap-y-8 mx-auto pt-14 md:pt-20 border-tertiary-border border-r border-l w-full max-w-[1200px]",
+				"gap-y-7 md:gap-y-8 mx-auto pt-16 md:pt-20 border-tertiary-border border-r border-l w-full max-w-[1200px]",
 				className
 			)}
 		>
@@ -18,9 +19,13 @@ export function SectionWrapper({ children, className }: SectionWrapperProps) {
 	)
 }
 
-export function BgWrapper({ children, className }: SectionWrapperProps) {
+export const BgWrapper = forwardRef<HTMLDivElement, SectionWrapperProps>(function BgWrapper(
+	{ children, className },
+	ref
+) {
 	return (
 		<div
+			ref={ref}
 			className={cn(
 				"relative flex gap-2 bg-overlay-subtle p-2 rounded-[20px] outline outline-secondary-border",
 				className
@@ -29,7 +34,7 @@ export function BgWrapper({ children, className }: SectionWrapperProps) {
 			{children}
 		</div>
 	)
-}
+})
 
 const fullWidthStyle = {
 	left: "calc(-50vw + 50%)",

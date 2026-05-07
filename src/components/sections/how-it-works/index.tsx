@@ -237,7 +237,7 @@ export default function HowItWorks() {
 							/>
 						</div>
 					</Card>
-					<Card className='col-span-5 overflow-hidden'>
+					<Card className='max-md:gap-0 col-span-5 max-md:pb-0 overflow-hidden'>
 						<CardHeader
 							title='Keep hiring memory'
 							description={"Every search, shortlist, and decision is saved and reused for future roles"}
@@ -248,7 +248,7 @@ export default function HowItWorks() {
 								width={1380}
 								height={920}
 								sizes='(min-width: 1024px) 420px, 100vw'
-								className='md:absolute md:inset-0 w-full md:w-full h-auto md:h-full object-contain md:scale-125 pointer-events-none select-none'
+								className='md:absolute md:inset-0 w-full h-auto md:h-full object-contain md:scale-125 pointer-events-none select-none'
 								src='/how-it-works/context-diagram.png'
 								alt='Keep hiring memory'
 								draggable={false}
@@ -289,7 +289,7 @@ function CardHeader({ title, description, number }: CardHeaderProps) {
 					{description}
 				</p>
 			</div>
-			<p className='top-0 right-0 absolute opacity-60 font-semibold text-tertiary-text text-xs md:text-sm tracking-[-0.01em]'>
+			<p className='top-0 right-0 absolute opacity-60 font-semibold text-[13px] text-tertiary-text md:text-sm tracking-[-0.01em]'>
 				{number}
 			</p>
 		</div>

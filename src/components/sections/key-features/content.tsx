@@ -1,5 +1,4 @@
 "use client"
-
 import { AnimatePresence, motion } from "framer-motion"
 import { useEffect, useState, type ReactNode } from "react"
 import { Logo } from "@/components/ui/icons/logo"
@@ -9,21 +8,19 @@ import { cn } from "@/lib/utils"
 
 export function FeatureContent({ activeIndex }: { activeIndex: number }) {
 	return (
-		<div className='relative flex-1 px-10 border border-secondary-border rounded-[14px] min-w-0'>
-			<AnimatePresence mode='wait'>
-				<motion.div
-					key={activeIndex}
-					initial={{ opacity: 1 }}
-					animate={{ opacity: 1 }}
-					exit={{ opacity: 0, transition: { duration: 0.12 } }}
-					className='absolute inset-0 flex flex-col gap-4 mx-auto pt-12 max-w-[660px] overflow-y-clip text-base'
-				>
-					{activeIndex === 0 && <CandidateSearchContent />}
-					{activeIndex === 1 && <JobPostingContent />}
-					{activeIndex === 2 && <SalaryBenchmarkContent />}
-				</motion.div>
-			</AnimatePresence>
-		</div>
+		<AnimatePresence mode='wait'>
+			<motion.div
+				key={activeIndex}
+				initial={{ opacity: 1 }}
+				animate={{ opacity: 1 }}
+				exit={{ opacity: 0, transition: { duration: 0.12 } }}
+				className='flex flex-col gap-3 lg:gap-4 mx-auto pt-5 lg:pt-12 lg:max-w-[660px] h-full overflow-y-clip text-base'
+			>
+				{activeIndex === 0 && <CandidateSearchContent />}
+				{activeIndex === 1 && <JobPostingContent />}
+				{activeIndex === 2 && <SalaryBenchmarkContent />}
+			</motion.div>
+		</AnimatePresence>
 	)
 }
 
@@ -57,7 +54,10 @@ function ChatSequence({
 				initial={{ opacity: 0, y: 6 }}
 				animate={{ opacity: 1, y: 0 }}
 				transition={{ duration: 0.4 }}
-				className={cn("bg-overlay-soft mb-2.5 ml-auto px-3.5 py-2.5 rounded-[10px]", className)}
+				className={cn(
+					"bg-overlay-soft mb-2.5 ml-auto px-3.5 py-2.5 rounded-[10px] max-w-[250px] lg:max-w-[unset] text-[13px] lg:text-base",
+					className
+				)}
 			>
 				{userMessage}
 			</motion.div>
@@ -67,9 +67,9 @@ function ChatSequence({
 					initial={{ opacity: 0, y: 5 }}
 					animate={{ opacity: 1, y: 0 }}
 					transition={{ duration: 0.15, delay: 0.1 }}
-					className='flex items-center gap-2 font-bold text-[17px] leading-none tracking-tight'
+					className='flex items-center gap-2 font-bold lg:text-[17px] text-sm leading-none tracking-tight'
 				>
-					<Logo />
+					<Logo className='size-4 lg:size-5' />
 					OXXI
 				</motion.div>
 
@@ -82,7 +82,7 @@ function ChatSequence({
 							transition={{ duration: 0.15 }}
 							className='flex items-center gap-1.5 text-tertiary-text'
 						>
-							<span className='text-[15px]'>Oxxi is thinking</span>
+							<span className='lg:text-[15px] text-sm'>Oxxi is thinking</span>
 							<span className='flex items-center h-5 font-light text-[15px]'>
 								{[0, 0.15, 0.3].map((delay) => (
 									<motion.span
@@ -105,7 +105,7 @@ function ChatSequence({
 					)}
 				</AnimatePresence>
 
-				<p className='tracking-[-0.01em]'>
+				<p className='text-[13px] lg:text-base tracking-[-0.01em]'>
 					<BlurTypewriter text={responseText} delayMs={1200} durationMs={typeDurationMs ?? 1500} />
 				</p>
 			</div>
@@ -273,7 +273,7 @@ function SalaryBenchmarkContent() {
 				initial={{ opacity: 0, y: 16, scale: 0.97 }}
 				animate={{ opacity: 1, y: 0, scale: 1 }}
 				transition={{ duration: 0.5, delay: 2.6 }}
-				className='flex-1 pb-8 min-h-[200px]'
+				className='flex-1 pb-5 xl:pb-8 min-h-[200px]'
 			>
 				<BarChart
 					data={SALARY_DATA}
