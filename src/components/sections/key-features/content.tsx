@@ -61,7 +61,7 @@ function ChatSequence({
 				animate={{ opacity: 1, y: 0 }}
 				transition={{ duration: 0.4 }}
 				className={cn(
-					"bg-overlay-soft mb-2.5 ms-auto px-3.5 py-2.5 rounded-[10px] max-w-[280px] lg:max-w-[unset] text-[13px] lg:text-base",
+					"bg-overlay-soft ms-auto mb-2.5 px-3.5 py-2.5 rounded-[10px] max-w-[260px] md:max-w-[unset] text-[13px] md:text-base",
 					className
 				)}
 			>
@@ -73,9 +73,9 @@ function ChatSequence({
 					initial={{ opacity: 0, y: 5 }}
 					animate={{ opacity: 1, y: 0 }}
 					transition={{ duration: 0.15, delay: 0.1 }}
-					className='flex items-center gap-2 font-bold lg:text-[17px] text-sm leading-none tracking-tight'
+					className='flex items-center gap-2 font-bold md:text-[17px] text-sm leading-none tracking-tight'
 				>
-					<Logo className='size-4 lg:size-5' />
+					<Logo className='size-4 md:size-5' />
 					OXXI
 				</motion.div>
 
@@ -88,7 +88,7 @@ function ChatSequence({
 							transition={{ duration: 0.15 }}
 							className='flex items-center gap-1.5 text-tertiary-text'
 						>
-							<span className='lg:text-[15px] text-sm'>{t("thinking")}</span>
+							<span className='md:text-[15px] text-sm'>{t("thinking")}</span>
 							<span className='flex items-center h-5 font-light text-[15px]'>
 								{[0, 0.15, 0.3].map((delay) => (
 									<motion.span
@@ -111,7 +111,7 @@ function ChatSequence({
 					)}
 				</AnimatePresence>
 
-				<p className='text-[13px] lg:text-base tracking-[-0.01em]'>
+				<p className='text-[13px] md:text-base tracking-[-0.01em]'>
 					<BlurTypewriter text={responseText} delayMs={1200} durationMs={typeDurationMs ?? 1500} />
 				</p>
 			</div>
@@ -125,10 +125,7 @@ function CandidateSearchContent() {
 	const t = useTranslations("keyFeatures.content.candidates")
 	const tActions = useTranslations("keyFeatures.content.actions")
 	return (
-		<ChatSequence
-			userMessage={t("userMessage")}
-			responseText={t("response")}
-		>
+		<ChatSequence userMessage={t("userMessage")} responseText={t("response")}>
 			<motion.div
 				initial={{ opacity: 0, y: 20, scale: 1.1 }}
 				animate={{ opacity: 1, y: 0, scale: 1 }}
@@ -174,11 +171,7 @@ function JobPostingContent() {
 	const t = useTranslations("keyFeatures.content.jobs")
 	const tActions = useTranslations("keyFeatures.content.actions")
 	return (
-		<ChatSequence
-			userMessage={t("userMessage")}
-			responseText={t("response")}
-			typeDurationMs={1200}
-		>
+		<ChatSequence userMessage={t("userMessage")} responseText={t("response")} typeDurationMs={1200}>
 			<motion.div
 				initial={{ opacity: 0, y: 20, scale: 1.1 }}
 				animate={{ opacity: 1, y: 0, scale: 1 }}
@@ -204,8 +197,8 @@ function JobPostingContent() {
 				transition={{ duration: 0.4, delay: 3.1 }}
 				className='px-1'
 			>
-				<h4 className='font-semibold text-base'>{t("responsibilities")}</h4>
-				<ul className='space-y-1 mt-2 ps-4 text-secondary-text text-base list-disc'>
+				<h4 className='font-semibold text-sm md:text-base'>{t("responsibilities")}</h4>
+				<ul className='space-y-1 mt-2 ps-4 text-secondary-text text-sm md:text-base list-disc'>
 					<li>{t("responsibility1")}</li>
 					<li>{t("responsibility2")}</li>
 				</ul>
@@ -278,11 +271,7 @@ function SalaryBenchmarkContent() {
 	]
 
 	return (
-		<ChatSequence
-			userMessage={t("userMessage")}
-			responseText={t("response")}
-			typeDurationMs={1200}
-		>
+		<ChatSequence userMessage={t("userMessage")} responseText={t("response")} typeDurationMs={1200}>
 			<motion.div
 				initial={{ opacity: 0, y: 16, scale: 0.97 }}
 				animate={{ opacity: 1, y: 0, scale: 1 }}

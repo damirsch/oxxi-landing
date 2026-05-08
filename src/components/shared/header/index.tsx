@@ -69,6 +69,7 @@ export function Header() {
 		body.style.right = "0"
 		body.style.width = "100%"
 		return () => {
+			const y = scrollLockY.current
 			html.style.overflow = ""
 			body.style.overflow = ""
 			body.style.position = ""
@@ -76,7 +77,11 @@ export function Header() {
 			body.style.left = ""
 			body.style.right = ""
 			body.style.width = ""
-			window.scrollTo(0, scrollLockY.current)
+			// Global `html { scroll-behavior: smooth }` would animate this scroll from 0 → y.
+			const prevScrollBehavior = html.style.scrollBehavior
+			html.style.scrollBehavior = "auto"
+			window.scrollTo(0, y)
+			html.style.scrollBehavior = prevScrollBehavior
 		}
 	}, [menuOpen])
 
@@ -99,7 +104,7 @@ export function Header() {
 						<span className='font-bold text-primary-text text-lg md:text-xl leading-none tracking-tight'>OXXI</span>
 					</Link>
 
-					<nav className='hidden absolute inset-s-1/2 md:flex items-center gap-1 -translate-x-1/2 rtl:translate-x-1/2'>
+					<nav className='hidden absolute inset-s-1/2 lg:flex items-center gap-1 -translate-x-1/2 rtl:translate-x-1/2'>
 						{NAV_KEYS.map((key) => (
 							<a
 								key={key}
@@ -111,7 +116,7 @@ export function Header() {
 						))}
 					</nav>
 
-					<div className='hidden md:flex gap-2'>
+					<div className='hidden lg:flex gap-2'>
 						<LocaleSwitcher />
 						<Button variant='secondary' href='https://app.oxxi.com/login'>
 							{t("login")}
@@ -125,7 +130,7 @@ export function Header() {
 						type='button'
 						aria-label={menuOpen ? "Close menu" : "Open menu"}
 						aria-expanded={menuOpen}
-						className='md:hidden flex justify-center items-center -me-2 size-10 cursor-pointer'
+						className='lg:hidden flex justify-center items-center -me-2 size-10 cursor-pointer'
 						onClick={() => setMenuOpen((v) => !v)}
 					>
 						<BurgerIcon open={menuOpen} />
@@ -135,8 +140,8 @@ export function Header() {
 
 			<div
 				className={cn(
-				"md:hidden top-14 right-0 bottom-0 left-0 z-50 fixed flex flex-col justify-between bg-primary-background transition-transform duration-300 ease-in-out",
-				menuOpen ? "translate-x-0" : "ltr:translate-x-full rtl:-translate-x-full"
+					"lg:hidden top-14 md:top-20 right-0 bottom-0 left-0 z-50 fixed flex flex-col justify-between bg-primary-background transition-transform duration-300 ease-in-out",
+					menuOpen ? "translate-x-0" : "ltr:translate-x-full rtl:-translate-x-full"
 				)}
 			>
 				<nav className='flex flex-col py-2'>
@@ -152,7 +157,7 @@ export function Header() {
 					))}
 				</nav>
 				<div className='flex flex-col gap-3 px-4 pb-4'>
-					<LocaleSwitcher className='w-full' />
+					<LocaleSwitcher className='w-full h-10' />
 					<div className='flex gap-2'>
 						<Button variant='secondary' className='w-full h-10' href='https://app.oxxi.com/login' onClick={closeMenu}>
 							{t("login")}

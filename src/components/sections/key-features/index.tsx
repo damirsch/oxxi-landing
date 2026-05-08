@@ -115,7 +115,7 @@ export default function KeyFeatures() {
 							/>
 						))}
 					</aside>
-					<div className='relative xl:flex-1 px-5 lg:px-10 lg:border border-secondary-border rounded-[14px] w-full min-w-0 h-[450px] lg:h-[550px] xl:h-[unset] overflow-hidden'>
+					<div className='relative xl:flex-1 px-5 lg:px-10 lg:border border-secondary-border rounded-[14px] w-full min-w-0 h-[450px] md:h-[550px] xl:h-[unset] overflow-hidden'>
 						{hasStarted && <FeatureContent activeIndex={activeIndex} />}
 					</div>
 				</BgWrapper>
@@ -172,19 +172,19 @@ function KeyFeatureCard({
 					) : null}
 				</div>
 				<div className='flex flex-col flex-1 px-4 py-1 lg:py-2 min-w-0'>
-					<div className='flex items-center gap-2 font-semibold text-sm lg:text-base'>
+					<div className='flex items-center gap-2 font-semibold text-sm md:text-base'>
 						<Icon className={cn("size-[18px]", isActive ? "text-secondary-text" : "text-tertiary-text")} />
 						<span className={cn(isActive ? "cursor-text" : "text-secondary-text")}>{title}</span>
 					</div>
 					<div
 						className={cn(
-							"grid transition-all duration-300 lg:grid-rows-[1fr] lg:opacity-100 lg:mt-2",
+							"grid lg:grid-rows-[1fr] lg:opacity-100 lg:mt-2 transition-all duration-300",
 							isActive ? "grid-rows-[1fr] opacity-100 mt-2" : "max-lg:grid-rows-[0fr] max-lg:opacity-0 max-lg:mt-0"
 						)}
 					>
 						<p
 							className={cn(
-								"overflow-hidden text-[13px] xl:text-[15px] lg:text-sm min-h-0",
+								"min-h-0 overflow-hidden text-[13px] xl:text-[15px] md:text-sm",
 								isActive ? "cursor-text text-secondary-text" : "text-tertiary-text"
 							)}
 						>

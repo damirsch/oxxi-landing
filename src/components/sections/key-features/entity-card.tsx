@@ -60,7 +60,7 @@ export function EntityCard({
 			<div className='flex justify-between items-center gap-2 p-3 max-lg:px-3.5 border-secondary-border border-b'>
 				<div className='flex flex-1 items-center gap-2.5 min-w-0'>
 					{headerIcon}
-					<span className='font-semibold text-[13px] lg:text-sm truncate leading-[1.2]'>{headerTitle}</span>
+					<span className='font-semibold text-[13px] md:text-sm truncate leading-[1.2]'>{headerTitle}</span>
 					{headerBadge && (
 						<span className='bg-overlay-soft px-2 py-1 rounded-full font-semibold text-secondary-text text-xs leading-none shrink-0'>
 							{headerBadge}
@@ -72,8 +72,8 @@ export function EntityCard({
 
 			<div>
 				<div className='px-3.5 lg:px-3 pt-3 lg:pt-[10px] pb-3.5 lg:pb-3'>
-					{sectionTitle && <h3 className='font-semibold text-[13px] lg:text-[15px]'>{sectionTitle}</h3>}
-					<p className={cn("text-secondary-text text-xs lg:text-sm", sectionTitle && "mt-1.5")}>{description}</p>
+					{sectionTitle && <h3 className='font-semibold text-[13px] md:text-[15px]'>{sectionTitle}</h3>}
+					<p className={cn("text-secondary-text text-xs md:text-sm", sectionTitle && "mt-1.5")}>{description}</p>
 
 					{meta && meta.some((m) => m.text) && (
 						<div className='max-lg:hidden flex flex-wrap items-center gap-4 mt-2 pt-1 pb-0.5 text-tertiary-text'>
@@ -94,10 +94,10 @@ export function EntityCard({
 						<Button
 							key={action.label}
 							variant={action.variant ?? "default"}
-							className='max-lg:px-2.5 max-lg:h-8 font-semibold max-lg:text-xs'
+							className='max-md:px-2.5 max-md:h-8 font-semibold max-md:text-xs'
 							style={action.style}
 						>
-							{action.icon && <action.icon className='max-lg:hidden' {...action.iconProps} />}
+							{action.icon && <action.icon className='max-md:hidden' {...action.iconProps} />}
 							{action.label}
 						</Button>
 					))}
@@ -140,7 +140,9 @@ export function CandidatePreviewCard({
 	return (
 		<EntityCard
 			headerIcon={
-				src ? <Image src={src} alt={name} className='rounded-[5px] size-5 shrink-0' width={18} height={18} /> : undefined
+				src ? (
+					<Image src={src} alt={name} className='rounded-[5px] size-5 shrink-0' width={18} height={18} />
+				) : undefined
 			}
 			headerTitle={name}
 			sectionTitle={title}

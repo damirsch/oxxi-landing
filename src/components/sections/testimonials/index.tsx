@@ -126,8 +126,7 @@ export default function Testimonials() {
 	return (
 		<SectionWrapper className='flex flex-col'>
 			<SectionHeader title={t("title")} badgeTitle={t("badge")} badgeIcon={<IconStar />} />
-			<div className='relative flex flex-col items-center gap-6 py-10'>
-				<FullWidthLine position='top' />
+			<div className='relative flex flex-col items-center gap-6 pb-10'>
 				<FullWidthLine position='bottom' />
 
 				<div ref={containerRef} className='relative w-full overflow-hidden overscroll-x-contain touch-pan-y' dir='ltr'>
@@ -154,16 +153,16 @@ export default function Testimonials() {
 							<article
 								key={i}
 								dir='auto'
-								className='flex flex-col gap-6 bg-surface-background shadow-[0_2px_8px_0_rgba(0,0,0,0.04)] p-6 md:p-7 border border-secondary-border rounded-[12px] w-[340px] sm:w-[420px] h-fit shrink-0'
+								className='flex flex-col gap-6 bg-surface-background shadow-[0_2px_8px_0_rgba(0,0,0,0.04)] p-5 md:p-7 border border-secondary-border rounded-[12px] w-[340px] sm:w-[420px] h-fit shrink-0'
 							>
-								<p className='text-secondary-text text-base leading-[1.4]'>{t(`items.${i}.quote`)}</p>
+								<p className='text-secondary-text text-sm md:text-base leading-[1.4]'>{t(`items.${i}.quote`)}</p>
 								<div className='flex items-center gap-3'>
-									<div className='flex justify-center items-center bg-tertiary-background/50 rounded-full size-11 font-semibold text-secondary-text text-sm shrink-0'>
+									<div className='flex justify-center items-center bg-tertiary-background/50 rounded-full size-10 md:size-11 font-semibold text-secondary-text text-sm shrink-0'>
 										{t(`items.${i}.name`).charAt(0)}
 									</div>
 									<div className='flex flex-col gap-1 w-full'>
-										<p className='text-base leading-[1.2]'>{t(`items.${i}.name`)}</p>
-										<p className='text-tertiary-text text-sm leading-[1.2]'>
+										<p className='text-sm md:text-base leading-[1.2]'>{t(`items.${i}.name`)}</p>
+										<p className='text-[13px] text-tertiary-text md:text-sm leading-[1.2]'>
 											{t(`items.${i}.role`)}, {t(`items.${i}.company`)}
 										</p>
 									</div>

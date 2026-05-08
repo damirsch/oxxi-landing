@@ -26,16 +26,19 @@ export default async function WhyOxxi() {
 	const t = await getTranslations("whyOxxi")
 
 	return (
-		<SectionWrapper className='flex flex-col pb-10'>
+		<SectionWrapper className='flex flex-col max-lg:gap-2 pb-0 lg:pb-10'>
 			<SectionHeader title={t("title")} badgeTitle={t("badge")} badgeIcon={<IconStars />} />
 			<div className='relative flex lg:flex-row flex-col'>
-				<FullWidthLine position='top' />
-				<FullWidthLine position='bottom' />
+				<FullWidthLine position='top' className='max-lg:hidden' />
+				<FullWidthLine position='bottom' className='max-lg:hidden' />
 
 				{WHY_OXXI.map((item) => (
 					<div
 						key={item.id}
-						className={cn("flex flex-col items-center gap-6 px-5 md:px-10 pt-8 lg:pt-5 pb-10 w-full", item.border)}
+						className={cn(
+							"flex flex-col items-center gap-4 lg:gap-6 px-5 md:px-10 pt-8 lg:pt-5 pb-10 w-full",
+							item.border
+						)}
 					>
 						<div className='flex flex-col items-center gap-2'>
 							<div
