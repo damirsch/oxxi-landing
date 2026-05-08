@@ -6,35 +6,63 @@ import { cn } from "@/lib/utils"
 import { Spinner } from "@/components/ui/spinner"
 import { buttonVariants, type ButtonVariants } from "@/components/ui/button-variants"
 
-export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement>, ButtonVariants {
+type ButtonBaseProps = ButtonVariants & {
 	asChild?: boolean
 	isLoading?: boolean
+	className?: string
+	children?: React.ReactNode
 }
 
-const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-	({ className, variant = "default", size, asChild = false, isLoading, children, disabled, ...props }, ref) => {
+type ButtonAsButton = ButtonBaseProps &
+	Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, keyof ButtonBaseProps> & { href?: undefined }
+
+type ButtonAsLink = ButtonBaseProps &
+	Omit<React.AnchorHTMLAttributes<HTMLAnchorElement>, keyof ButtonBaseProps> & { href: string }
+
+export type ButtonProps = ButtonAsButton | ButtonAsLink
+
+const Button = React.forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonProps>(
+	({ className, variant = "default", size, asChild = false, isLoading, children, href, ...props }, ref) => {
 		const isLightVariant = ["accent", "destructive", "secondary"].includes(variant || "default")
+		const classes = cn(buttonVariants({ variant, size, className }))
+
+		const spinner = isLoading ? (
+			<Spinner
+				size='sm'
+				className={
+					variant === "default"
+						? "border-primary-background/30 border-t-primary-background"
+						: isLightVariant
+						? "border-white/30 border-t-white"
+						: undefined
+				}
+			/>
+		) : null
+
+		if (href) {
+			return (
+				<a
+					className={classes}
+					href={href}
+					ref={ref as React.Ref<HTMLAnchorElement>}
+					{...(props as React.AnchorHTMLAttributes<HTMLAnchorElement>)}
+				>
+					{spinner}
+					{children}
+				</a>
+			)
+		}
+
 		const Comp = asChild ? Slot : "button"
 
 		return (
 			<Comp
-				className={cn(buttonVariants({ variant, size, className }))}
-				ref={ref}
-				disabled={disabled || isLoading}
-				{...props}
+				className={classes}
+				ref={ref as React.Ref<HTMLButtonElement>}
+				disabled={(props as React.ButtonHTMLAttributes<HTMLButtonElement>).disabled || isLoading}
+				{...(props as React.ButtonHTMLAttributes<HTMLButtonElement>)}
 			>
-				{isLoading && (
-					<Spinner
-						size='sm'
-						className={
-							variant === "default"
-								? "border-primary-background/30 border-t-primary-background"
-								: isLightVariant
-								? "border-white/30 border-t-white"
-								: undefined
-						}
-					/>
-				)}
+				{spinner}
 				{asChild ? children : <>{children}</>}
 			</Comp>
 		)

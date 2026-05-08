@@ -11,10 +11,283 @@
 		"signup": "Sign up"
 	},
 	"hero": {
-		"title": "AI-powered hiring platform",
-		"subtitle": "Find the best talent faster with intelligent automation"
+		"badge": "Headhunting on autopilot",
+		"heading": "Oxxi. Your Hiring",
+		"headingHighlight": "Infrastructure",
+		"description": "Replace your spreadsheets and manual hiring workflows\nwith built-in search, distribution, and scheduling",
+		"ctaPrimary": "Start for free",
+		"ctaSecondary": "See how it works",
+		"inputPrompts": [
+			"Find senior React developers in Berlin",
+			"Schedule interviews for shortlisted candidates",
+			"Write a job description for a product manager",
+			"Source passive candidates with Python experience",
+			"Send follow-ups to applicants from last week"
+		],
+		"inputAdd": "Add"
+	},
+	"partners": {
+		"trustedBy": "Trusted by",
+		"highlight": "modern hiring teams",
+		"hiringTeams": "Hiring teams",
+		"techPartners": "Tech partners"
+	},
+	"keyFeatures": {
+		"badge": "Key Features",
+		"title": "Everything you need to hire",
+		"description": "Public web sourcing, job distribution, salary benchmarks",
+		"items": {
+			"headhunting": {
+				"title": "AI Headhunting",
+				"description": "Find top candidates or build your entire team with a single message"
+			},
+			"distribution": {
+				"title": "Job Distribution",
+				"description": "Create a job once and publish automatically across global job boards"
+			},
+			"benchmarks": {
+				"title": "Salary Benchmarks",
+				"description": "Compare salaries by role, location, and experience — real-time data"
+			}
+		},
+		"content": {
+			"thinking": "Oxxi is thinking",
+			"yAxisLabel": "Annual salary",
+		"candidates": {
+			"userMessage": "Find a marketing manager in UAE, budget is 15-25K AED",
+			"response": "I found 12 marketing managers in UAE within your budget of 15–25K AED. Filtered by industry experience and seniority. Here's the top matches:",
+			"card1": {
+				"name": "Ahmad Hassan",
+				"title": "Marketing Manager",
+				"description": "7+ years in B2B marketing across the GCC region. Led demand generation at a UAE-based SaaS company, growing inbound leads by 3x",
+				"location": "Dubai, UAE",
+				"rate": "25K AED/mo",
+				"experience": "8 years of experience"
+			},
+			"card2": {
+				"name": "Sara Al-Mutairi",
+				"title": "Senior Marketing Manager",
+				"description": "6+ years leading brand and content strategy for tech companies. Built and managed a",
+				"location": "Dubai, UAE",
+				"rate": "25K AED/mo",
+				"experience": "8 years of experience"
+			}
+		},
+		"jobs": {
+			"userMessage": "Create a job post for a Senior Product Designer, remote, $90-120K",
+			"response": "Done! I've drafted a job post based on your requirements. Review the details and publish when ready:",
+			"responsibilities": "Responsibilities",
+			"responsibility1": "Own the end-to-end design process from research to final handoff",
+			"responsibility2": "Collaborate with product and engineering on new features",
+			"card": {
+				"title": "Senior Product Designer",
+				"sectionTitle": "Job Introduction",
+				"description": "We're looking for a Senior Product Designer to lead end-to-end design for our B2B platform. You'll own the design system, run user research, and ship features that simplify complex workflows for enterprise teams",
+				"location": "Remote (US)",
+				"salary": "$90k–$120k",
+				"type": "Full-time",
+				"badge": "Draft"
+			}
+		},
+		"salary": {
+			"userMessage": "Show me salary benchmarks for Product Designers in Europe",
+			"response": "Here's a salary overview for Product Designers across seniority levels in Europe, based on current market data:",
+			"levels": {
+				"junior": "Junior",
+				"mid": "Mid",
+				"senior": "Senior",
+				"lead": "Lead"
+			}
+		},
+		"actions": {
+			"viewProfile": "View full profile",
+			"scheduleInterview": "Schedule an interview",
+			"preview": "Preview",
+			"postJob": "Post a job"
+		}
+		}
+	},
+	"howItWorks": {
+		"badge": "How It Works",
+		"title": "From description to hire in one place",
+		"description": "Tell Oxxi what you need, it handles the rest",
+		"inputPlaceholder": "Write your requirements naturally...",
+		"tags": {
+			"skills": "Skills",
+			"location": "Location",
+			"seniority": "Seniority",
+			"budget": "Budget"
+		},
+		"candidateName": "James Walker",
+		"candidateInfo": "Marketing Manager, Germany, $70/hr",
+		"toast": "You've viewed 10+ candidates today!",
+		"cards": {
+			"01": {
+				"title": "Describe the role",
+				"description": "Tell Oxxi what you're looking for. Skills, seniority, location, and budget. In plain language"
+			},
+			"02": {
+				"title": "Get candidates",
+				"description": "Oxxi analyzes your requirements and returns matching profiles, ranked by relevance"
+			},
+			"03": {
+				"title": "Shortlist with context",
+				"description": "Compare candidates side by side. Salary expectations, experience, and more"
+			},
+			"04": {
+				"title": "Take action",
+				"description": "Schedule interviews, reach out to candidates, or post a job. All without leaving the conversation"
+			},
+			"05": {
+				"title": "Keep hiring memory",
+				"description": "Every search, shortlist, and decision is saved and reused for future roles"
+			}
+		}
+	},
+	"whyOxxi": {
+		"badge": "Why Oxxi",
+		"title": "One workspace instead of\nendless disconnected tools",
+		"items": {
+			"traditional": {
+				"title": "Traditional hiring",
+				"description": "Too many tabs open, where's that candidate?"
+			},
+			"oxxi": {
+				"title": "Hiring with Oxxi",
+				"description": "Search, shortlist, and hire. All in one place"
+			}
+		}
+	},
+	"marquee": {
+		"title": "Oxxi becomes the layer\nyour hiring depends on",
+		"badgesTop": [
+			"No setup required to start sourcing",
+			"Find candidates with a single message",
+			"Contact candidates without leaving the chat",
+			"Internal and external sourcing in one system",
+			"AI-generated job drafts in seconds",
+			"One workspace for your entire team"
+		],
+		"badgesBottom": [
+			"Salary benchmarks built into the workflow",
+			"Compare candidates side by side",
+			"Schedule interviews from the candidate profile",
+			"Hiring context that carries forward",
+			"Replaces your full hiring stack",
+			"Visual pipelines from applied to offer"
+		]
+	},
+	"pricing": {
+		"title": "Pricing plans",
+		"description": "Pick a plan that fits your hiring volume",
+		"perMonth": "/month",
+		"fullAccess": "Full Access",
+		"plans": {
+			"free": {
+				"name": "Free",
+				"tagline": "Explore Oxxi",
+				"cta": "Start for free",
+				"features": [
+					"1 user",
+					"300 refresh credits everyday",
+					"4,000 credits per month",
+					"Talent vault",
+					"Unlimited CV uploads",
+					"Private talent pools",
+					"AI chat with your uploaded data"
+				]
+			},
+			"lite": {
+				"name": "Lite",
+				"tagline": "Occasional hiring",
+				"cta": "Start hiring",
+				"features": [
+					"3 users",
+					"Everything in Free",
+					"3 active job slots",
+					"Candidate sourcing",
+					"Hire for active roles",
+					"Candidate profiles with context"
+				]
+			},
+			"pro": {
+				"name": "Pro",
+				"tagline": "For growing teams",
+				"cta": "Start hiring",
+				"features": [
+					"5 users",
+					"Everything in Lite",
+					"Unlimited job slots",
+					"Salary benchmarks",
+					"Interview scheduling"
+				]
+			}
+		},
+		"enterprise": {
+			"title": "Enterprise",
+			"description": "High-volume hiring, custom pricing",
+			"cta": "Contact sales"
+		}
+	},
+	"cta": {
+		"heading": "Your next hire starts",
+		"headingHighlight": "with a message",
+		"button": "Start for free"
+	},
+	"faq": {
+		"title": "FAQs",
+		"description": "Get answers to the most common\nquestions about Oxxi",
+		"items": [
+			{
+				"question": "Do I need existing hiring data?",
+				"answer": "No. Oxxi starts sourcing from the public web from day one. Existing data simply makes it stronger over time"
+			},
+			{
+				"question": "Does it replace ATS?",
+				"answer": "Yes. Oxxi includes a built-in ATS, along with sourcing, outreach, scheduling, salary intelligence, and hiring memory"
+			},
+			{
+				"question": "Can it automate outreach and scheduling?",
+				"answer": "Yes. Outreach and scheduling can be automated, with recruiter approval at every step"
+			},
+			{
+				"question": "Is it suitable for agencies?",
+				"answer": "Yes. Oxxi is designed to handle multiple roles and clients with shared hiring memory"
+			},
+			{
+				"question": "Is my data private?",
+				"answer": "Yes. Your data is always private and is never used for model training."
+			}
+		]
 	},
 	"footer": {
-		"rights": "All rights reserved."
+		"tagline": "Your hiring",
+		"taglineHighlight": "Infrastructure",
+		"company": {
+			"title": "Company",
+			"home": "Home",
+			"howItWorks": "How it works",
+			"pricing": "Pricing",
+			"faq": "FAQ"
+		},
+		"product": {
+			"title": "Product",
+			"dashboard": "Dashboard",
+			"chat": "Chat",
+			"api": "API"
+		},
+		"legal": {
+			"title": "Legal",
+			"privacy": "Privacy Policy",
+			"terms": "Terms of Service"
+		},
+		"social": {
+			"title": "Follow us",
+			"linkedin": "LinkedIn",
+			"twitter": "X / Twitter",
+			"instagram": "Instagram",
+			"github": "GitHub"
+		},
+		"copyright": "© 2026 Oxxi. A Mawared Tech Company"
 	}
 }

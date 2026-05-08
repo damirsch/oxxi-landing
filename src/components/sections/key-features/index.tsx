@@ -6,6 +6,7 @@ import { BgWrapper, FullWidthLine, SectionWrapper } from "@/components/ui/wrappe
 import { cn } from "@/lib/utils"
 import { FeatureContent } from "./content"
 import { CYCLE_MS, KEY_FEATURE_ITEMS } from "./constants"
+import { useTranslations } from "next-intl"
 
 function useFeatureTabCycle() {
 	const count = KEY_FEATURE_ITEMS.length
@@ -83,13 +84,14 @@ function useFeatureTabCycle() {
 
 export default function KeyFeatures() {
 	const { inViewRootRef, activeIndex, cycle, hasStarted, isInView, select } = useFeatureTabCycle()
+	const t = useTranslations("keyFeatures")
 
 	return (
-		<SectionWrapper className='flex flex-col'>
+		<SectionWrapper id='features' className='flex flex-col'>
 			<SectionHeader
-				title='Everything you need to hire'
-				description='Public web sourcing, job distribution, salary benchmarks'
-				badgeTitle='Key Features'
+				title={t("title")}
+				description={t("description")}
+				badgeTitle={t("badge")}
 				badgeIcon={<IconTool2 />}
 			/>
 			<div className='relative py-px'>
@@ -102,9 +104,9 @@ export default function KeyFeatures() {
 					<aside className='flex lg:flex-row flex-col xl:flex-col gap-1.5 p-5 lg:p-0 max-lg:border-primary-border max-lg:border-t xl:max-w-[340px]'>
 						{KEY_FEATURE_ITEMS.map((feature, index) => (
 							<KeyFeatureCard
-								key={feature.title}
-								title={feature.title}
-								description={feature.description}
+								key={feature.id}
+								title={t(`items.${feature.id}.title`)}
+								description={t(`items.${feature.id}.description`)}
 								Icon={feature.Icon as FC<IconProps>}
 								isActive={index === activeIndex}
 								isRunning={isInView && hasStarted}
@@ -147,7 +149,7 @@ function KeyFeatureCard({
 			aria-pressed={isActive}
 			onClick={onSelect}
 			className={cn(
-				"flex items-center p-4 lg:p-8 xl:p-9 border rounded-[12px] lg:rounded-[14px] w-full min-h-0 text-left transition-all duration-300",
+				"flex items-center p-4 lg:p-8 xl:p-9 border rounded-[12px] lg:rounded-[14px] w-full min-h-0 text-start transition-all duration-300",
 				isActive
 					? "bg-surface-background select-text shadow-[0_2px_6px_0_rgba(0,0,0,0.04)] border-primary-border"
 					: "bg-white/40 lg:bg-[#F6F6F6] shadow-[0_2px_6px_0_rgba(0,0,0,0.03)] border-secondary-border hover:bg-[#fcfcfc] max-lg:py-2 max-lg:rounded-[8px] cursor-pointer"

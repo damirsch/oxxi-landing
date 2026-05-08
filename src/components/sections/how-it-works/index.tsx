@@ -12,6 +12,7 @@ import SectionHeader from "@/components/ui/section-header"
 import { BgWrapper, FullWidthLine, SectionWrapper } from "@/components/ui/wrappers"
 import { cn } from "@/lib/utils"
 import Image from "next/image"
+import { getTranslations } from "next-intl/server"
 
 const TAG_BASE =
 	"border-secondary-border text-[13px] bg-surface-background h-7 ps-2 pe-3 rounded-[8px] text-secondary-text/80"
@@ -21,13 +22,15 @@ const TAG_ICON_PROPS = {
 	iconClassName: "text-tertiary-text [&_svg]:size-[14px]",
 } as const
 
-export default function HowItWorks() {
+export default async function HowItWorks() {
+	const t = await getTranslations("howItWorks")
+
 	return (
-		<SectionWrapper className='flex flex-col'>
+		<SectionWrapper id='how-it-works' className='flex flex-col'>
 			<SectionHeader
-				title='From description to hire in one place'
-				description='Tell Oxxi what you need, it handles the rest'
-				badgeTitle='How It Works'
+				title={t("title")}
+				description={t("description")}
+				badgeTitle={t("badge")}
 				badgeIcon={<IconHelpCircle />}
 			/>
 			<div className='relative py-px'>
@@ -36,10 +39,8 @@ export default function HowItWorks() {
 				<BgWrapper className='flex flex-col md:grid grid-cols-12 max-xl:bg-transparent max-xl:p-5 max-sm:py-0 max-xl:rounded-none max-xl:outline-none'>
 					<Card className='col-span-12'>
 						<CardHeader
-							title='Describe the role'
-							description={
-								"Tell Oxxi what you're looking for. Skills, seniority, location, and budget. In plain language"
-							}
+							title={t("cards.01.title")}
+							description={t("cards.01.description")}
 							number='01'
 						/>
 						<div className='group/input min-[840px]:top-1/2 z-10 min-[840px]:absolute relative min-[840px]:inset-e-14 xl:inset-e-20 flex items-center gap-0 xl:gap-1 h-full min-[840px]:-translate-y-1/2'>
@@ -53,7 +54,7 @@ export default function HowItWorks() {
 									icon={<IconTool />}
 									{...TAG_ICON_PROPS}
 								>
-									Skills
+									{t("tags.skills")}
 								</Badge>
 								<Badge
 									size='small'
@@ -64,16 +65,16 @@ export default function HowItWorks() {
 									icon={<IconMarkerPin />}
 									{...TAG_ICON_PROPS}
 								>
-									Location
+									{t("tags.location")}
 								</Badge>
 							</div>
 							<div className='relative bg-secondary-background p-2.5 sm:p-3 md:p-4 rounded-full w-full min-[840px]:w-[350px] xl:w-[400px] overflow-hidden cursor-default'>
 								<div className='-top-[10%] left-[16%] absolute bg-tertiary-text opacity-60 blur-[50px] rounded-full w-8 h-[120%] -rotate-19' />
 								<div className='-top-[30%] right-0 absolute bg-tertiary-text opacity-30 blur-[60px] rounded-full w-[80px] h-[160%] -rotate-12 translate-x-1/2' />
 								<div className='z-10 relative flex justify-between items-center bg-surface-background shadow-[0_4px_6px_0_rgba(0,0,0,0.04)] py-2 ps-4 pe-1.5 border border-primary-border rounded-full h-11'>
-									<p className='opacity-70 text-[13px] text-tertiary-text md:text-sm'>
-										Write your requirements naturally...
-									</p>
+								<p className='opacity-70 text-[13px] text-tertiary-text md:text-sm'>
+									{t("inputPlaceholder")}
+								</p>
 									<div
 										className='flex justify-center items-center rounded-full size-8 shrink-0'
 										style={{
@@ -96,7 +97,7 @@ export default function HowItWorks() {
 									icon={<IconChartUp />}
 									{...TAG_ICON_PROPS}
 								>
-									Seniority
+									{t("tags.seniority")}
 								</Badge>
 								<Badge
 									size='small'
@@ -107,15 +108,15 @@ export default function HowItWorks() {
 									icon={<IconBankNote />}
 									{...TAG_ICON_PROPS}
 								>
-									Budget
+									{t("tags.budget")}
 								</Badge>
 							</div>
 						</div>
 					</Card>
 					<Card className='col-span-5'>
 						<CardHeader
-							title='Get candidates'
-							description={"Oxxi analyzes your requirements and returns matching profiles, ranked by relevance"}
+							title={t("cards.02.title")}
+							description={t("cards.02.description")}
 							number='02'
 						/>
 						<div className='group/candidates flex flex-col gap-2 md:gap-3.5 mx-auto my-auto max-w-[320px] md:max-w-[unset] cursor-default'>
@@ -144,7 +145,7 @@ export default function HowItWorks() {
 									className='size-8 lg:size-10 object-contain pointer-events-none select-none shrink-0'
 								/>
 								<div className='flex flex-col justify-center gap-1 w-full font-semibold'>
-									<p className='text-[12px] text-white lg:text-[15px] leading-[1.1] tracking-[-0.01em]'>James Walker</p>
+									<p className='text-[12px] text-white lg:text-[15px] leading-[1.1] tracking-[-0.01em]'>{t("candidateName")}</p>
 									<p
 										className='bg-clip-text text-[11px] text-transparent lg:text-[13px] leading-[1.2] tracking-[-0.01em] whitespace-nowrap'
 										style={{
@@ -152,7 +153,7 @@ export default function HowItWorks() {
 												"linear-gradient(90deg, var(--color-tertiary-text) 0%, #D4D4D4 30%, var(--color-tertiary-text) 100%)",
 										}}
 									>
-										Marketing Manager, Germany, $70/hr
+										{t("candidateInfo")}
 									</p>
 								</div>
 							</div>
@@ -168,8 +169,8 @@ export default function HowItWorks() {
 					</Card>
 					<Card className='col-span-7 md:pb-0'>
 						<CardHeader
-							title='Shortlist with context'
-							description={"Compare candidates side by side. Salary expectations, experience, and more"}
+							title={t("cards.03.title")}
+							description={t("cards.03.description")}
 							number='03'
 						/>
 						<div className='relative flex mx-auto mt-auto w-full md:w-[95%]'>
@@ -202,7 +203,7 @@ export default function HowItWorks() {
 								>
 									<IconCheckCircle className='size-4 shrink-0' />
 									<span className='text-[13px] leading-none tracking-[-0.01em] whitespace-nowrap'>
-										You&apos;ve viewed 10+ candidates today!
+										{t("toast")}
 									</span>
 								</div>
 								<div className='top-0 left-1/2 -z-10 absolute bg-[#787777] rounded-[16px] w-[calc(100%-26px)] h-[calc(100%+5px)] -translate-x-1/2' />
@@ -212,10 +213,8 @@ export default function HowItWorks() {
 					</Card>
 					<Card className='col-span-7'>
 						<CardHeader
-							title='Take action'
-							description={
-								"Schedule interviews, reach out to candidates, or post a job. All without leaving the conversation"
-							}
+							title={t("cards.04.title")}
+							description={t("cards.04.description")}
 							number='04'
 						/>
 						<div className='relative mt-auto w-full'>
@@ -239,8 +238,8 @@ export default function HowItWorks() {
 					</Card>
 					<Card className='max-md:gap-0 col-span-5 max-md:pb-0 overflow-hidden'>
 						<CardHeader
-							title='Keep hiring memory'
-							description={"Every search, shortlist, and decision is saved and reused for future roles"}
+							title={t("cards.05.title")}
+							description={t("cards.05.description")}
 							number='05'
 						/>
 						<div className='relative md:flex-1 w-full md:min-h-0'>
@@ -289,7 +288,7 @@ function CardHeader({ title, description, number }: CardHeaderProps) {
 					{description}
 				</p>
 			</div>
-			<p className='top-0 right-0 absolute opacity-60 font-semibold text-[13px] text-tertiary-text md:text-sm tracking-[-0.01em]'>
+			<p className='top-0 inset-e-0 absolute opacity-60 font-semibold text-[13px] text-tertiary-text md:text-sm tracking-[-0.01em]'>
 				{number}
 			</p>
 		</div>

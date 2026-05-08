@@ -45,7 +45,7 @@ export function HeroShowcase() {
 					/>
 				</div>
 
-				<motion.div variants={item} className='hidden xl:block top-[18%] -right-[12%] z-20 absolute w-[26%]'>
+				<motion.div variants={item} className='hidden xl:block top-[18%] -inset-e-[12%] z-20 absolute w-[26%]'>
 					<ParallaxCard className='rotate-8' speed={25} floatDuration={4} floatDistance={3}>
 						<Image
 							className='shadow-card border border-secondary-border rounded-xl w-full h-auto pointer-events-none select-none'
@@ -58,7 +58,7 @@ export function HeroShowcase() {
 					</ParallaxCard>
 				</motion.div>
 
-				<motion.div variants={item} className='hidden xl:block top-[34%] -left-[8%] z-20 absolute w-[33%]'>
+				<motion.div variants={item} className='hidden xl:block top-[34%] -inset-s-[8%] z-20 absolute w-[33%]'>
 					<ParallaxCard className='-rotate-8' speed={70} floatDuration={4.5} floatDistance={7}>
 						<Image
 							className='shadow-card border border-secondary-border rounded-xl w-full h-auto pointer-events-none select-none'

@@ -21,9 +21,6 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
 				<Pricing />
 				<CTA />
 				<FAQ />
-				<SectionWrapper className='h-40'>
-					<span></span>
-				</SectionWrapper>
 			</main>
 			<Footer />
 		</>

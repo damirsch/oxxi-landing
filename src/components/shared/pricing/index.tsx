@@ -3,11 +3,14 @@ import { BgWrapper, FullWidthLine, SectionWrapper } from "@/components/ui/wrappe
 import { PRICING_PLANS } from "./constants"
 import { PricingEnterpriseBanner } from "./enterprise-banner"
 import { PricingPlanCard } from "./plan-card"
+import { getTranslations } from "next-intl/server"
 
-export function Pricing() {
+export async function Pricing() {
+	const t = await getTranslations("pricing")
+
 	return (
-		<SectionWrapper className='flex flex-col'>
-			<SectionHeader title='Pricing plans' description='Pick a plan that fits your hiring volume' />
+		<SectionWrapper id='pricing' className='flex flex-col'>
+			<SectionHeader title={t("title")} description={t("description")} />
 			<div className='relative py-px'>
 				<FullWidthLine className='max-lg:hidden' position='top' />
 				<FullWidthLine className='max-lg:hidden' position='bottom' />

@@ -5,14 +5,7 @@ import { AnimatePresence, motion } from "framer-motion"
 import { cva } from "class-variance-authority"
 import { cn } from "@/lib/utils"
 import { IconArrowUp, IconChevronUp, IconMicrophone, IconPlugs, IconPlus } from "@/components/ui/icons"
-
-const prompts = [
-	"Find senior React developers in Berlin",
-	"Schedule interviews for shortlisted candidates",
-	"Write a job description for a product manager",
-	"Source passive candidates with Python experience",
-	"Send follow-ups to applicants from last week",
-]
+import { useTranslations } from "next-intl"
 
 const INTERVAL = 4000
 
@@ -33,6 +26,8 @@ const roundPill = cva(
 )
 
 export function HeroInput({ className }: { className?: string }) {
+	const t = useTranslations("hero")
+	const prompts = Array.from({ length: 5 }, (_, i) => t(`inputPrompts.${i}`))
 	const [index, setIndex] = useState(0)
 
 	useEffect(() => {
@@ -40,7 +35,7 @@ export function HeroInput({ className }: { className?: string }) {
 			setIndex((i) => (i + 1) % prompts.length)
 		}, INTERVAL)
 		return () => clearInterval(id)
-	}, [])
+	}, [prompts.length])
 
 	return (
 		<div
@@ -73,7 +68,7 @@ export function HeroInput({ className }: { className?: string }) {
 					</span>
 					<span className={cn(roundPill({ variant: "secondary" }), "scale-90 sm:scale-100")} aria-hidden>
 						<IconPlugs />
-						Add
+						{t("inputAdd")}
 						<IconChevronUp className='-rotate-180 transition-transform duration-200' />
 					</span>
 				</div>

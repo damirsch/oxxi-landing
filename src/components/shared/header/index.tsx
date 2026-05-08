@@ -6,6 +6,7 @@ import { useTranslations } from "next-intl"
 import { Link } from "@/i18n/navigation"
 import { Button } from "../../ui/button"
 import { Logo } from "../../ui/icons/logo"
+import { LocaleSwitcher } from "./locale-switcher"
 
 const NAV_KEYS = ["features", "howItWorks", "pricing", "faq", "api"] as const
 
@@ -111,8 +112,13 @@ export function Header() {
 					</nav>
 
 					<div className='hidden md:flex gap-2'>
-						<Button variant='secondary'>{t("login")}</Button>
-						<Button variant='default'>{t("signup")}</Button>
+						<LocaleSwitcher />
+						<Button variant='secondary' href='https://app.oxxi.com/login'>
+							{t("login")}
+						</Button>
+						<Button variant='default' href='https://app.oxxi.com/signup'>
+							{t("signup")}
+						</Button>
 					</div>
 
 					<button
@@ -129,8 +135,8 @@ export function Header() {
 
 			<div
 				className={cn(
-					"md:hidden top-14 right-0 bottom-0 left-0 z-50 fixed flex flex-col justify-between bg-primary-background transition-transform duration-300 ease-in-out",
-					menuOpen ? "translate-x-0" : "translate-x-full"
+				"md:hidden top-14 right-0 bottom-0 left-0 z-50 fixed flex flex-col justify-between bg-primary-background transition-transform duration-300 ease-in-out",
+				menuOpen ? "translate-x-0" : "ltr:translate-x-full rtl:-translate-x-full"
 				)}
 			>
 				<nav className='flex flex-col py-2'>
@@ -145,13 +151,16 @@ export function Header() {
 						</a>
 					))}
 				</nav>
-				<div className='flex gap-2 px-4 pb-4'>
-					<Button variant='secondary' className='w-full h-10' onClick={closeMenu}>
-						{t("login")}
-					</Button>
-					<Button variant='default' className='w-full h-10' onClick={closeMenu}>
-						{t("signup")}
-					</Button>
+				<div className='flex flex-col gap-3 px-4 pb-4'>
+					<LocaleSwitcher className='w-full' />
+					<div className='flex gap-2'>
+						<Button variant='secondary' className='w-full h-10' href='https://app.oxxi.com/login' onClick={closeMenu}>
+							{t("login")}
+						</Button>
+						<Button variant='default' className='w-full h-10' href='https://app.oxxi.com/signup' onClick={closeMenu}>
+							{t("signup")}
+						</Button>
+					</div>
 				</div>
 			</div>
 		</>

@@ -5,6 +5,7 @@ import { Logo } from "@/components/ui/icons/logo"
 import { CandidatePreviewCard, JobPostingCard } from "./entity-card"
 import { BarChart } from "@/components/ui/charts/bar-chart"
 import { cn } from "@/lib/utils"
+import { useTranslations } from "next-intl"
 
 export function FeatureContent({ activeIndex }: { activeIndex: number }) {
 	return (
@@ -41,6 +42,7 @@ function ChatSequence({
 	children: ReactNode
 	className?: string
 }) {
+	const t = useTranslations("keyFeatures.content")
 	const [showThinking, setShowThinking] = useState(false)
 
 	useEffect(() => {
@@ -59,7 +61,7 @@ function ChatSequence({
 				animate={{ opacity: 1, y: 0 }}
 				transition={{ duration: 0.4 }}
 				className={cn(
-					"bg-overlay-soft mb-2.5 ml-auto px-3.5 py-2.5 rounded-[10px] max-w-[280px] lg:max-w-[unset] text-[13px] lg:text-base",
+					"bg-overlay-soft mb-2.5 ms-auto px-3.5 py-2.5 rounded-[10px] max-w-[280px] lg:max-w-[unset] text-[13px] lg:text-base",
 					className
 				)}
 			>
@@ -86,7 +88,7 @@ function ChatSequence({
 							transition={{ duration: 0.15 }}
 							className='flex items-center gap-1.5 text-tertiary-text'
 						>
-							<span className='lg:text-[15px] text-sm'>Oxxi is thinking</span>
+							<span className='lg:text-[15px] text-sm'>{t("thinking")}</span>
 							<span className='flex items-center h-5 font-light text-[15px]'>
 								{[0, 0.15, 0.3].map((delay) => (
 									<motion.span
@@ -120,12 +122,12 @@ function ChatSequence({
 }
 
 function CandidateSearchContent() {
+	const t = useTranslations("keyFeatures.content.candidates")
+	const tActions = useTranslations("keyFeatures.content.actions")
 	return (
 		<ChatSequence
-			userMessage='Find a marketing manager in UAE, budget is 15-25K AED'
-			responseText={
-				"I found 12 marketing managers in UAE within your budget of 15\u201325K AED. Filtered by industry experience and seniority. Here\u2019s the top matches:"
-			}
+			userMessage={t("userMessage")}
+			responseText={t("response")}
 		>
 			<motion.div
 				initial={{ opacity: 0, y: 20, scale: 1.1 }}
@@ -133,12 +135,14 @@ function CandidateSearchContent() {
 				transition={{ duration: 0.5, delay: 2.9 }}
 			>
 				<CandidatePreviewCard
-					name='Ahmad Hassan'
-					title='Marketing Manager'
-					description='7+ years in B2B marketing across the GCC region. Led demand generation at a UAE-based SaaS company, growing inbound leads by 3x'
-					location='Dubai, UAE'
-					rate='25K AED/mo'
-					experience='8 years of experience'
+					name={t("card1.name")}
+					title={t("card1.title")}
+					description={t("card1.description")}
+					location={t("card1.location")}
+					rate={t("card1.rate")}
+					experience={t("card1.experience")}
+					viewProfileLabel={tActions("viewProfile")}
+					scheduleLabel={tActions("scheduleInterview")}
 					src='/key-features/avatar-1.png'
 					className='z-10 shadow-candidate-table'
 				/>
@@ -150,12 +154,14 @@ function CandidateSearchContent() {
 				transition={{ duration: 0.5, delay: 3.0 }}
 			>
 				<CandidatePreviewCard
-					name='Sara Al-Mutairi'
-					title='Senior Marketing Manager'
-					description='6+ years leading brand and content strategy for tech companies. Built and managed a'
-					location='Dubai, UAE'
-					rate='25K AED/mo'
-					experience='8 years of experience'
+					name={t("card2.name")}
+					title={t("card2.title")}
+					description={t("card2.description")}
+					location={t("card2.location")}
+					rate={t("card2.rate")}
+					experience={t("card2.experience")}
+					viewProfileLabel={tActions("viewProfile")}
+					scheduleLabel={tActions("scheduleInterview")}
 					src='/key-features/avatar-2.png'
 					className='opacity-50'
 				/>
@@ -165,12 +171,12 @@ function CandidateSearchContent() {
 }
 
 function JobPostingContent() {
+	const t = useTranslations("keyFeatures.content.jobs")
+	const tActions = useTranslations("keyFeatures.content.actions")
 	return (
 		<ChatSequence
-			userMessage='Create a job post for a Senior Product Designer, remote, $90-120K'
-			responseText={
-				"Done! I\u2019ve drafted a job post based on your requirements. Review the details and publish when ready:"
-			}
+			userMessage={t("userMessage")}
+			responseText={t("response")}
 			typeDurationMs={1200}
 		>
 			<motion.div
@@ -179,12 +185,15 @@ function JobPostingContent() {
 				transition={{ duration: 0.5, delay: 2.6 }}
 			>
 				<JobPostingCard
-					title='Senior Product Designer'
-					sectionTitle='Job Introduction'
-					description="We're looking for a Senior Product Designer to lead end-to-end design for our B2B platform. You'll own the design system, run user research, and ship features that simplify complex workflows for enterprise teams"
-					location='Remote (US)'
-					salary='$90k–$120k'
-					type='Full-time'
+					title={t("card.title")}
+					sectionTitle={t("card.sectionTitle")}
+					description={t("card.description")}
+					location={t("card.location")}
+					salary={t("card.salary")}
+					type={t("card.type")}
+					badge={t("card.badge")}
+					previewLabel={tActions("preview")}
+					postJobLabel={tActions("postJob")}
 					className='z-10 shadow-candidate-table'
 				/>
 			</motion.div>
@@ -195,10 +204,10 @@ function JobPostingContent() {
 				transition={{ duration: 0.4, delay: 3.1 }}
 				className='px-1'
 			>
-				<h4 className='font-semibold text-base'>Responsibilities</h4>
-				<ul className='space-y-1 mt-2 pl-4 text-secondary-text text-base list-disc'>
-					<li>Own the end-to-end design process from research to final handoff</li>
-					<li>Collaborate with product and engineering on new features</li>
+				<h4 className='font-semibold text-base'>{t("responsibilities")}</h4>
+				<ul className='space-y-1 mt-2 ps-4 text-secondary-text text-base list-disc'>
+					<li>{t("responsibility1")}</li>
+					<li>{t("responsibility2")}</li>
 				</ul>
 			</motion.div>
 		</ChatSequence>
@@ -257,20 +266,21 @@ function BlurTypewriter({ text, delayMs, durationMs }: { text: string; delayMs: 
 	)
 }
 
-const SALARY_DATA = [
-	{ name: "Junior", min: 42, max: 52 },
-	{ name: "Mid", min: 55, max: 68 },
-	{ name: "Senior", min: 65, max: 78 },
-	{ name: "Lead", min: 72, max: 92 },
-]
-
 function SalaryBenchmarkContent() {
+	const t = useTranslations("keyFeatures.content.salary")
+	const tContent = useTranslations("keyFeatures.content")
+
+	const salaryData = [
+		{ name: t("levels.junior"), min: 42, max: 52 },
+		{ name: t("levels.mid"), min: 55, max: 68 },
+		{ name: t("levels.senior"), min: 65, max: 78 },
+		{ name: t("levels.lead"), min: 72, max: 92 },
+	]
+
 	return (
 		<ChatSequence
-			userMessage='Show me salary benchmarks for Product Designers in Europe'
-			responseText={
-				"Here\u2019s a salary overview for Product Designers across seniority levels in Europe, based on current market data:"
-			}
+			userMessage={t("userMessage")}
+			responseText={t("response")}
 			typeDurationMs={1200}
 		>
 			<motion.div
@@ -280,8 +290,8 @@ function SalaryBenchmarkContent() {
 				className='flex-1 pb-5 xl:pb-8 min-h-[200px]'
 			>
 				<BarChart
-					data={SALARY_DATA}
-					yAxisLabel='Annual salary'
+					data={salaryData}
+					yAxisLabel={tContent("yAxisLabel")}
 					range
 					height='100%'
 					unit={"\u20AC"}

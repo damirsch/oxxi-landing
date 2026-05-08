@@ -22,7 +22,7 @@ const SectionHeader = ({ className, title, description, badgeTitle, badgeIcon }:
 					{title}
 				</h3>
 				{description && (
-					<p className='font-semibold text-[15px] text-tertiary-text md:text-lg xl:text-2xl tracking-[-0.01em] whitespace-pre-line'>
+					<p className='font-semibold text-[15px] text-tertiary-text xl:text-[22px] md:text-lg leading-[1.4] tracking-[-0.01em] whitespace-pre-line'>
 						{description}
 					</p>
 				)}

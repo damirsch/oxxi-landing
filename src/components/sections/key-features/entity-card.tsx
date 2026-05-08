@@ -119,6 +119,8 @@ interface CandidatePreviewCardProps {
 	location?: string
 	rate?: string
 	experience?: string
+	viewProfileLabel: string
+	scheduleLabel: string
 	className?: string
 	src?: string
 }
@@ -130,6 +132,8 @@ export function CandidatePreviewCard({
 	location,
 	rate,
 	experience,
+	viewProfileLabel,
+	scheduleLabel,
 	src,
 	className,
 }: CandidatePreviewCardProps) {
@@ -147,8 +151,8 @@ export function CandidatePreviewCard({
 				{ icon: IconHourGlass, text: experience },
 			]}
 			actions={[
-				{ label: "View full profile", variant: "secondary" },
-				{ label: "Schedule an interview", icon: IconCalendar, iconProps: { strokeWidth: 1.5 }, style: DARK_GRADIENT_STYLE },
+				{ label: viewProfileLabel, variant: "secondary" },
+				{ label: scheduleLabel, icon: IconCalendar, iconProps: { strokeWidth: 1.5 }, style: DARK_GRADIENT_STYLE },
 			]}
 			className={className}
 		/>
@@ -162,6 +166,9 @@ interface JobPostingCardProps {
 	location?: string
 	salary?: string
 	type?: string
+	badge?: string
+	previewLabel: string
+	postJobLabel: string
 	className?: string
 }
 
@@ -172,13 +179,16 @@ export function JobPostingCard({
 	location,
 	salary,
 	type,
+	badge,
+	previewLabel,
+	postJobLabel,
 	className,
 }: JobPostingCardProps) {
 	return (
 		<EntityCard
 			headerIcon={<IconJob className='size-5 text-job-primary shrink-0' />}
 			headerTitle={title}
-			headerBadge='Draft'
+			headerBadge={badge}
 			sectionTitle={sectionTitle}
 			description={description}
 			meta={[
@@ -187,8 +197,8 @@ export function JobPostingCard({
 				{ icon: IconClock, text: type },
 			]}
 			actions={[
-				{ label: "Preview", variant: "secondary" },
-				{ label: "Post a job", style: DARK_GRADIENT_STYLE },
+				{ label: previewLabel, variant: "secondary" },
+				{ label: postJobLabel, style: DARK_GRADIENT_STYLE },
 			]}
 			className={className}
 		/>

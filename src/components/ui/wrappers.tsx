@@ -4,13 +4,15 @@ import { cn } from "@/lib/utils"
 interface SectionWrapperProps {
 	children: React.ReactNode
 	className?: string
+	id?: string
 }
 
-export function SectionWrapper({ children, className }: SectionWrapperProps) {
+export function SectionWrapper({ children, className, id }: SectionWrapperProps) {
 	return (
 		<section
+			id={id}
 			className={cn(
-				"gap-y-7 md:gap-y-8 mx-auto pt-16 md:pt-20 border-tertiary-border lg:border-r lg:border-l w-full max-w-[1200px]",
+				"gap-y-7 md:gap-y-8 mx-auto pt-16 md:pt-20 border-tertiary-border lg:border-r lg:border-l w-full max-w-[1200px] scroll-mt-14 md:scroll-mt-20",
 				className
 			)}
 		>

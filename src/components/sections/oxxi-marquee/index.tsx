@@ -15,49 +15,43 @@ import SectionHeader from "@/components/ui/section-header"
 import { FullWidthLine, SectionWrapper } from "@/components/ui/wrappers"
 import { FC } from "react"
 import { cn } from "@/lib/utils"
+import { getTranslations } from "next-intl/server"
 
-export type MarqueeBadgeItem = {
-	Icon: FC<IconProps>
-	text: string
-}
-
-const MARQUEE_BADGES_TOP: MarqueeBadgeItem[] = [
-	{ Icon: IconLightning, text: "No setup required to start sourcing" },
-	{ Icon: IconSearch, text: "Find candidates with a single message" },
-	{ Icon: IconMessageChat, text: "Contact candidates without leaving the chat" },
-	{ Icon: IconLayersThree, text: "Internal and external sourcing in one system" },
-	{ Icon: IconStars, text: "AI-generated job drafts in seconds" },
-	{ Icon: IconCheck, text: "One workspace for your entire team" },
+const ICONS_TOP: FC<IconProps>[] = [IconLightning, IconSearch, IconMessageChat, IconLayersThree, IconStars, IconCheck]
+const ICONS_BOTTOM: FC<IconProps>[] = [
+	IconBenchmark,
+	IconCheck,
+	IconCalendarCheck,
+	IconRefresh,
+	IconCubeOutline,
+	IconCheck,
 ]
 
-const MARQUEE_BADGES_BOTTOM: MarqueeBadgeItem[] = [
-	{ Icon: IconBenchmark, text: "Salary benchmarks built into the workflow" },
-	{ Icon: IconCheck, text: "Compare candidates side by side" },
-	{ Icon: IconCalendarCheck, text: "Schedule interviews from the candidate profile" },
-	{ Icon: IconRefresh, text: "Hiring context that carries forward" },
-	{ Icon: IconCubeOutline, text: "VReplaces your full hiring stack" },
-	{ Icon: IconCheck, text: "Visual pipelines from applied to offer" },
-]
+export default async function OxxiMarquee() {
+	const t = await getTranslations("marquee")
+	const badgesTop = ICONS_TOP.map((Icon, i) => ({ Icon, text: t(`badgesTop.${i}`) }))
+	const badgesBottom = ICONS_BOTTOM.map((Icon, i) => ({ Icon, text: t(`badgesBottom.${i}`) }))
 
-export default function OxxiMarquee() {
 	return (
 		<SectionWrapper>
 			<div className='relative flex flex-col items-center gap-7 md:gap-8 py-14 md:py-24'>
 				<FullWidthLine position='top' />
 				<FullWidthLine position='bottom' />
-				<SectionHeader title={"Oxxi becomes the layer\nyour hiring depends on"} />
+				<SectionHeader title={t("title")} />
 				<div className='flex flex-col gap-2 sm:gap-2.5 w-full'>
-					<BadgeMarqueeRow reverse items={MARQUEE_BADGES_TOP} />
-					<BadgeMarqueeRow items={MARQUEE_BADGES_BOTTOM} />
+					<BadgeMarqueeRow reverse items={badgesTop} />
+					<BadgeMarqueeRow items={badgesBottom} />
 				</div>
 			</div>
 		</SectionWrapper>
 	)
 }
 
+type MarqueeBadgeItem = { Icon: FC<IconProps>; text: string }
+
 function BadgeMarqueeRow({ reverse, items }: { reverse?: boolean; items: MarqueeBadgeItem[] }) {
 	return (
-		<div className='relative py-0.5 overflow-hidden'>
+		<div className='relative py-0.5 overflow-hidden' dir='ltr'>
 			<div className='left-0 z-10 absolute inset-y-0 bg-linear-to-r from-primary-background to-transparent w-20 pointer-events-none' />
 			<div className='right-0 z-10 absolute inset-y-0 bg-linear-to-l from-primary-background to-transparent w-20 pointer-events-none' />
 			<div
@@ -85,7 +79,7 @@ function BadgeMarqueeStrip({ items }: { items: MarqueeBadgeItem[] }) {
 
 function MarqueeBadge({ Icon, text }: { Icon: FC<IconProps>; text: string }) {
 	return (
-		<div className='flex items-center gap-2 bg-surface-background shadow-[0_2px_8px_0_rgba(0,0,0,0.04)] px-3 border border-primary-border rounded-[10px] sm:rounded-[12px] h-9 sm:h-10 text-secondary-text'>
+		<div className='flex items-center gap-2 bg-surface-background shadow-[0_2px_8px_0_rgba(0,0,0,0.04)] px-3 border border-primary-border rounded-[10px] sm:rounded-[12px] h-9 sm:h-10 text-secondary-text' dir='auto'>
 			<Icon className='size-4 sm:size-[18px]' strokeWidth={1.3} />
 			<span className='text-[13px] sm:text-sm whitespace-nowrap'>{text}</span>
 		</div>
