@@ -6,5 +6,6 @@ import WhyOxxi from "./why-oxxi"
 import OxxiMarquee from "./oxxi-marquee"
 import CTA from "./cta"
 import FAQ from "./faq"
+import Testimonials from "./testimonials"
 
-export { Hero, Partners, HowItWorks, KeyFeatures, WhyOxxi, OxxiMarquee, CTA, FAQ }
+export { Hero, Partners, HowItWorks, KeyFeatures, WhyOxxi, OxxiMarquee, CTA, FAQ, Testimonials }

@@ -289,5 +289,41 @@
 			"github": "GitHub"
 		},
 		"copyright": "© 2026 Oxxi. A Mawared Tech Company"
+	},
+	"testimonials": {
+		"badge": "Testimonials",
+		"title": "See what others say\nabout Oxxi",
+		"items": [
+			{
+				"quote": "Oxxi changed how we approach hiring entirely. Instead of starting from scratch for every role, we now build on past candidates and decisions. It feels more like a system than a process.",
+				"name": "Daniel Reeves",
+				"role": "Recruitment Lead",
+				"company": "Kait"
+			},
+			{
+				"quote": "We used to juggle five tools just to fill one role. Now everything lives in one place — sourcing, outreach, scheduling. Our time-to-hire dropped by 40% in the first month.",
+				"name": "Layla Mansour",
+				"role": "Head of People",
+				"company": "Savor"
+			},
+			{
+				"quote": "The salary benchmarks alone saved us from losing two senior candidates. We were unknowingly offering below market, and Oxxi surfaced that instantly.",
+				"name": "Marcus Chen",
+				"role": "VP Engineering",
+				"company": "Baraton"
+			},
+			{
+				"quote": "I was skeptical about AI sourcing, but Oxxi found candidates we never would have reached through traditional channels. The quality of matches is genuinely impressive.",
+				"name": "Nadia Al-Rashid",
+				"role": "Talent Acquisition Manager",
+				"company": "UPayments"
+			},
+			{
+				"quote": "What sets Oxxi apart is hiring memory. Every search builds on the last one — it actually learns your preferences and gets better over time. Nothing else does this.",
+				"name": "James Kofi",
+				"role": "COO",
+				"company": "MOOSH"
+			}
+		]
 	}
 }
