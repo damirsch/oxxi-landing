@@ -42,11 +42,11 @@ const MARQUEE_BADGES_BOTTOM: MarqueeBadgeItem[] = [
 export default function OxxiMarquee() {
 	return (
 		<SectionWrapper>
-			<div className='relative flex flex-col items-center gap-8 py-24'>
+			<div className='relative flex flex-col items-center gap-7 md:gap-8 py-14 md:py-24'>
 				<FullWidthLine position='top' />
 				<FullWidthLine position='bottom' />
 				<SectionHeader title={"Oxxi becomes the layer\nyour hiring depends on"} />
-				<div className='flex flex-col gap-2.5 w-full'>
+				<div className='flex flex-col gap-2 sm:gap-2.5 w-full'>
 					<BadgeMarqueeRow reverse items={MARQUEE_BADGES_TOP} />
 					<BadgeMarqueeRow items={MARQUEE_BADGES_BOTTOM} />
 				</div>
@@ -60,7 +60,12 @@ function BadgeMarqueeRow({ reverse, items }: { reverse?: boolean; items: Marquee
 		<div className='relative py-0.5 overflow-hidden'>
 			<div className='left-0 z-10 absolute inset-y-0 bg-linear-to-r from-primary-background to-transparent w-20 pointer-events-none' />
 			<div className='right-0 z-10 absolute inset-y-0 bg-linear-to-l from-primary-background to-transparent w-20 pointer-events-none' />
-			<div className={cn("flex gap-2.5 w-max animate-marquee-badge-row", reverse && "[animation-direction:reverse]")}>
+			<div
+				className={cn(
+					"flex gap-2 sm:gap-2.5 w-max animate-marquee-badge-row",
+					reverse && "[animation-direction:reverse]"
+				)}
+			>
 				<BadgeMarqueeStrip items={items} />
 				<BadgeMarqueeStrip items={items} />
 			</div>
@@ -70,7 +75,7 @@ function BadgeMarqueeRow({ reverse, items }: { reverse?: boolean; items: Marquee
 
 function BadgeMarqueeStrip({ items }: { items: MarqueeBadgeItem[] }) {
 	return (
-		<div className='flex gap-2.5 shrink-0'>
+		<div className='flex gap-2 sm:gap-2.5 shrink-0'>
 			{items.map((item, i) => (
 				<MarqueeBadge key={i} Icon={item.Icon} text={item.text} />
 			))}
@@ -80,9 +85,9 @@ function BadgeMarqueeStrip({ items }: { items: MarqueeBadgeItem[] }) {
 
 function MarqueeBadge({ Icon, text }: { Icon: FC<IconProps>; text: string }) {
 	return (
-		<div className='flex items-center gap-2 bg-surface-background shadow-[0_2px_8px_0_rgba(0,0,0,0.04)] px-3 border border-primary-border rounded-[12px] h-10 min-h-10 text-secondary-text text-sm whitespace-nowrap'>
-			<Icon className='size-[18px]' strokeWidth={1.3} />
-			{text}
+		<div className='flex items-center gap-2 bg-surface-background shadow-[0_2px_8px_0_rgba(0,0,0,0.04)] px-3 border border-primary-border rounded-[10px] sm:rounded-[12px] h-9 sm:h-10 text-secondary-text'>
+			<Icon className='size-4 sm:size-[18px]' strokeWidth={1.3} />
+			<span className='text-[13px] sm:text-sm whitespace-nowrap'>{text}</span>
 		</div>
 	)
 }

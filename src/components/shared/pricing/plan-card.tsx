@@ -14,7 +14,7 @@ export function PricingPlanCard({ plan }: { plan: PricingPlan }) {
 		>
 			<div className='flex justify-between items-start mb-5'>
 				<div>
-					<h3 className='font-semibold text-[22px] leading-none'>{plan.name}</h3>
+					<h3 className='font-semibold sm:text-[22px] text-xl leading-none'>{plan.name}</h3>
 					<p className='mt-1.5 ml-px text-[15px] text-tertiary-text leading-[1.2]'>{plan.tagline}</p>
 				</div>
 				{plan.recommended ? (
