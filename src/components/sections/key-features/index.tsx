@@ -97,7 +97,7 @@ export default function KeyFeatures() {
 				<FullWidthLine position='bottom' />
 				<BgWrapper
 					ref={inViewRootRef}
-					className='xl:flex-row lg:flex-col flex-col-reverse max-lg:p-0 rounded-none lg:rounded-[16px]'
+					className='xl:flex-row lg:flex-col flex-col-reverse max-lg:gap-0 max-lg:p-0 rounded-none lg:rounded-[16px]'
 				>
 					<aside className='flex lg:flex-row flex-col xl:flex-col gap-1.5 p-5 lg:p-0 max-lg:border-primary-border max-lg:border-t xl:max-w-[340px]'>
 						{KEY_FEATURE_ITEMS.map((feature, index) => (
@@ -113,12 +113,8 @@ export default function KeyFeatures() {
 							/>
 						))}
 					</aside>
-					<div className='relative xl:flex-1 px-5 lg:px-10 lg:border border-secondary-border rounded-[14px] w-full min-w-0 h-[450px] lg:h-[550px] xl:h-auto overflow-hidden'>
-						{hasStarted && (
-							<div className='flex flex-col h-full min-h-0'>
-								<FeatureContent activeIndex={activeIndex} />
-							</div>
-						)}
+					<div className='relative xl:flex-1 px-5 lg:px-10 lg:border border-secondary-border rounded-[14px] w-full min-w-0 h-[450px] lg:h-[550px] xl:h-[unset] overflow-hidden'>
+						{hasStarted && <FeatureContent activeIndex={activeIndex} />}
 					</div>
 				</BgWrapper>
 			</div>
@@ -151,7 +147,7 @@ function KeyFeatureCard({
 			aria-pressed={isActive}
 			onClick={onSelect}
 			className={cn(
-				"flex items-center p-4 lg:p-8 xl:p-9 border rounded-[12px] lg:rounded-[14px] w-full min-h-0 text-left transition-colors",
+				"flex items-center p-4 lg:p-8 xl:p-9 border rounded-[12px] lg:rounded-[14px] w-full min-h-0 text-left transition-all duration-300",
 				isActive
 					? "bg-surface-background select-text shadow-[0_2px_6px_0_rgba(0,0,0,0.04)] border-primary-border"
 					: "bg-white/40 lg:bg-[#F6F6F6] shadow-[0_2px_6px_0_rgba(0,0,0,0.03)] border-secondary-border hover:bg-[#fcfcfc] max-lg:py-2 max-lg:rounded-[8px] cursor-pointer"
@@ -173,19 +169,26 @@ function KeyFeatureCard({
 						/>
 					) : null}
 				</div>
-				<div className='flex flex-col flex-1 gap-2 px-4 py-1 lg:py-2 min-w-0'>
+				<div className='flex flex-col flex-1 px-4 py-1 lg:py-2 min-w-0'>
 					<div className='flex items-center gap-2 font-semibold text-sm lg:text-base'>
 						<Icon className={cn("size-[18px]", isActive ? "text-secondary-text" : "text-tertiary-text")} />
 						<span className={cn(isActive ? "cursor-text" : "text-secondary-text")}>{title}</span>
 					</div>
-					<p
+					<div
 						className={cn(
-							"text-[13px] xl:text-[15px] lg:text-sm",
-							isActive ? "cursor-text text-secondary-text " : "text-tertiary-text max-lg:hidden"
+							"grid transition-all duration-300 lg:grid-rows-[1fr] lg:opacity-100 lg:mt-2",
+							isActive ? "grid-rows-[1fr] opacity-100 mt-2" : "max-lg:grid-rows-[0fr] max-lg:opacity-0 max-lg:mt-0"
 						)}
 					>
-						{description}
-					</p>
+						<p
+							className={cn(
+								"overflow-hidden text-[13px] xl:text-[15px] lg:text-sm min-h-0",
+								isActive ? "cursor-text text-secondary-text" : "text-tertiary-text"
+							)}
+						>
+							{description}
+						</p>
+					</div>
 				</div>
 			</div>
 		</button>

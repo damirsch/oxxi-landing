@@ -14,7 +14,11 @@ export function FeatureContent({ activeIndex }: { activeIndex: number }) {
 				initial={{ opacity: 1 }}
 				animate={{ opacity: 1 }}
 				exit={{ opacity: 0, transition: { duration: 0.12 } }}
-				className='flex flex-col gap-3 lg:gap-4 mx-auto pt-5 lg:pt-12 lg:max-w-[660px] h-full overflow-y-clip text-base'
+				className={cn(
+					"flex flex-col gap-3 lg:gap-4 mx-auto pt-5 lg:pt-12 lg:max-w-[660px] overflow-y-clip text-base",
+					"xl:absolute xl:inset-0",
+					"max-xl:h-full"
+				)}
 			>
 				{activeIndex === 0 && <CandidateSearchContent />}
 				{activeIndex === 1 && <JobPostingContent />}
@@ -55,7 +59,7 @@ function ChatSequence({
 				animate={{ opacity: 1, y: 0 }}
 				transition={{ duration: 0.4 }}
 				className={cn(
-					"bg-overlay-soft mb-2.5 ml-auto px-3.5 py-2.5 rounded-[10px] max-w-[250px] lg:max-w-[unset] text-[13px] lg:text-base",
+					"bg-overlay-soft mb-2.5 ml-auto px-3.5 py-2.5 rounded-[10px] max-w-[280px] lg:max-w-[unset] text-[13px] lg:text-base",
 					className
 				)}
 			>
