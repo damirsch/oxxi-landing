@@ -126,15 +126,18 @@ export function Header() {
 						</Button>
 					</div>
 
-					<button
-						type='button'
-						aria-label={menuOpen ? "Close menu" : "Open menu"}
-						aria-expanded={menuOpen}
-						className='lg:hidden flex justify-center items-center -me-2 size-10 cursor-pointer'
-						onClick={() => setMenuOpen((v) => !v)}
-					>
-						<BurgerIcon open={menuOpen} />
-					</button>
+					<div className='lg:hidden flex items-center gap-1'>
+						<LocaleSwitcher />
+						<button
+							type='button'
+							aria-label={menuOpen ? "Close menu" : "Open menu"}
+							aria-expanded={menuOpen}
+							className='flex justify-center items-center size-10 cursor-pointer'
+							onClick={() => setMenuOpen((v) => !v)}
+						>
+							<BurgerIcon open={menuOpen} />
+						</button>
+					</div>
 				</div>
 			</header>
 
@@ -157,7 +160,6 @@ export function Header() {
 					))}
 				</nav>
 				<div className='flex flex-col gap-3 px-4 pb-4'>
-					<LocaleSwitcher className='w-full h-10' />
 					<div className='flex gap-2'>
 						<Button variant='secondary' className='w-full h-10' href='https://app.oxxi.com/login' onClick={closeMenu}>
 							{t("login")}

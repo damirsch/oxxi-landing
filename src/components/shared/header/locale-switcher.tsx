@@ -5,9 +5,9 @@ import { usePathname, useRouter } from "@/i18n/navigation"
 import { routing, type Locale } from "@/i18n/routing"
 import { cn } from "@/lib/utils"
 
-const LOCALE_LABELS: Record<Locale, string> = {
-	en: "EN",
-	ar: "AR",
+const LOCALE_CONFIG: Record<Locale, { label: string; flag: string }> = {
+	en: { label: "EN", flag: "🇺🇸" },
+	ar: { label: "AR", flag: "🇰🇼" },
 }
 
 export function LocaleSwitcher({ className }: { className?: string }) {
@@ -16,6 +16,7 @@ export function LocaleSwitcher({ className }: { className?: string }) {
 	const pathname = usePathname()
 
 	const nextLocale = routing.locales.find((l) => l !== locale) ?? routing.defaultLocale
+	const { label, flag } = LOCALE_CONFIG[nextLocale]
 
 	function switchLocale() {
 		router.replace(pathname, { locale: nextLocale })
@@ -26,11 +27,12 @@ export function LocaleSwitcher({ className }: { className?: string }) {
 			type='button'
 			onClick={switchLocale}
 			className={cn(
-				"flex items-center justify-center px-2.5 h-9 rounded-lg border border-overlay-bold text-sm font-medium text-primary-text hover:bg-overlay-ultra-subtle transition-colors cursor-pointer",
+				"flex items-center justify-center gap-1.5 px-2.5 h-9 rounded-lg border border-overlay-bold text-sm font-medium text-primary-text hover:bg-overlay-ultra-subtle transition-colors cursor-pointer",
 				className
 			)}
 		>
-			{LOCALE_LABELS[nextLocale]}
+			<span className='text-base leading-none'>{flag}</span>
+			{label}
 		</button>
 	)
 }

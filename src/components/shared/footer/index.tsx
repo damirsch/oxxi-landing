@@ -1,6 +1,8 @@
+import { IconGithub, IconInstagram, IconLinkedIn, IconTwitter } from "@/components/ui/icons"
 import { Logo } from "@/components/ui/icons/logo"
 import { FullWidthLine } from "@/components/ui/wrappers"
 import { getTranslations } from "next-intl/server"
+import type { ComponentType } from "react"
 
 export async function Footer() {
 	const t = await getTranslations("footer")
@@ -43,13 +45,13 @@ export async function Footer() {
 							{ name: t("legal.terms"), href: "#" },
 						]}
 					/>
-					<FooterSection
+					<FooterSocialSection
 						title={t("social.title")}
-						items={[
-							{ name: t("social.linkedin"), href: "#" },
-							{ name: t("social.twitter"), href: "#" },
-							{ name: t("social.instagram"), href: "#" },
-							{ name: t("social.github"), href: "#" },
+						links={[
+							{ label: t("social.linkedin"), href: "#", Icon: IconLinkedIn },
+							{ label: t("social.twitter"), href: "#", Icon: IconTwitter },
+							{ label: t("social.instagram"), href: "#", Icon: IconInstagram },
+							{ label: t("social.github"), href: "#", Icon: IconGithub },
 						]}
 					/>
 				</div>
@@ -88,5 +90,29 @@ function FooterLink({ href, children }: { href: string; children: React.ReactNod
 		>
 			{children}
 		</a>
+	)
+}
+
+interface FooterSocialLink {
+	label: string
+	href: string
+	Icon: ComponentType<{ className?: string }>
+}
+
+function FooterSocialSection({ title, links }: { title: string; links: FooterSocialLink[] }) {
+	return (
+		<div className='flex flex-col gap-4 w-full text-sm lg:text-base'>
+			<p className='leading-[1.2]'>{title}</p>
+			{links.map(({ label, href, Icon }) => (
+				<a
+					key={label}
+					href={href}
+					className='flex items-center gap-2.5 opacity-70 hover:opacity-100 w-fit text-tertiary-text hover:text-[#d3d3d3] leading-[1.2] transition-all'
+				>
+					<Icon className='size-[18px] shrink-0' aria-hidden />
+					<span>{label}</span>
+				</a>
+			))}
+		</div>
 	)
 }
