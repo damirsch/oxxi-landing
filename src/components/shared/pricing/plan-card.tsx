@@ -1,12 +1,15 @@
+"use client"
+
 import { Badge } from "@/components/ui/badge"
 import { buttonVariants } from "@/components/ui/button-variants"
+import { AnimatedCounter } from "@/components/ui/animated-counter"
 import { cn } from "@/lib/utils"
 import type { PricingPlan } from "./constants"
 import { PricingFeatureRow } from "./feature-row"
-import { getTranslations } from "next-intl/server"
+import { useTranslations } from "next-intl"
 
-export async function PricingPlanCard({ plan }: { plan: PricingPlan }) {
-	const t = await getTranslations("pricing")
+export function PricingPlanCard({ plan, price }: { plan: PricingPlan; price: number }) {
+	const t = useTranslations("pricing")
 
 	const planKey = `plans.${plan.id}` as const
 	const name = t(`${planKey}.name` as Parameters<typeof t>[0])
@@ -38,7 +41,9 @@ export async function PricingPlanCard({ plan }: { plan: PricingPlan }) {
 			</div>
 
 			<div className='mb-5'>
-				<span className='font-bold text-3xl'>${plan.monthlyPrice}</span>
+				<span className='font-bold text-3xl'>
+					<AnimatedCounter value={price} prefix='$' />
+				</span>
 				<span className='ms-0.5 text-tertiary-text text-sm'>{t("perMonth")}</span>
 			</div>
 

@@ -182,6 +182,11 @@
 		"description": "Pick a plan that fits your hiring volume",
 		"perMonth": "/month",
 		"fullAccess": "Full Access",
+		"toggle": {
+			"monthly": "Monthly",
+			"yearly": "Yearly",
+			"save": "Save 20%"
+		},
 		"plans": {
 			"free": {
 				"name": "Free",
@@ -284,11 +289,11 @@
 		"social": {
 			"title": "Follow us",
 			"linkedin": "LinkedIn",
-			"twitter": "X / Twitter",
+			"twitter": "x.com",
 			"instagram": "Instagram",
 			"github": "GitHub"
 		},
-		"copyright": "© 2026 Oxxi. A Mawared Tech Company"
+		"copyright": "© 2026 Oxxi™. All rights reserved."
 	},
 	"testimonials": {
 		"badge": "Testimonials",

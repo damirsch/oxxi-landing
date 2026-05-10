@@ -1,11 +1,13 @@
+"use client"
+
 import { buttonVariants } from "@/components/ui/button-variants"
 import { IconBuilding } from "@/components/ui/icons"
 import { cn } from "@/lib/utils"
 import { CONTACT_SALES_HREF } from "./constants"
-import { getTranslations } from "next-intl/server"
+import { useTranslations } from "next-intl"
 
-export async function PricingEnterpriseBanner() {
-	const t = await getTranslations("pricing.enterprise")
+export function PricingEnterpriseBanner() {
+	const t = useTranslations("pricing.enterprise")
 
 	return (
 		<div className='flex sm:flex-row flex-col sm:justify-between sm:items-center gap-4 bg-surface-background shadow-[0_2px_8px_0_rgba(0,0,0,0.04)] p-3 pe-4 border border-primary-border rounded-[16px] w-full'>

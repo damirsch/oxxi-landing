@@ -3,7 +3,7 @@
 import { useCallback, useEffect, useState } from "react"
 import useEmblaCarousel from "embla-carousel-react"
 import { WheelGesturesPlugin } from "embla-carousel-wheel-gestures"
-import { IconStar } from "@/components/ui/icons"
+import { IconMessageChat } from "@/components/ui/icons"
 import SectionHeader from "@/components/ui/section-header"
 import { FullWidthLine, SectionWrapper } from "@/components/ui/wrappers"
 import { cn } from "@/lib/utils"
@@ -50,7 +50,7 @@ export default function Testimonials() {
 
 	return (
 		<SectionWrapper className='flex flex-col'>
-			<SectionHeader title={t("title")} badgeTitle={t("badge")} badgeIcon={<IconStar />} />
+			<SectionHeader title={t("title")} badgeTitle={t("badge")} badgeIcon={<IconMessageChat />} />
 			<div className='relative flex flex-col items-center gap-6 pb-10'>
 				<FullWidthLine position='bottom' />
 

@@ -182,6 +182,11 @@
 		"description": "اختر الخطة التي تناسب حجم التوظيف لديك",
 		"perMonth": "/شهرياً",
 		"fullAccess": "وصول كامل",
+		"toggle": {
+			"monthly": "شهري",
+			"yearly": "سنوي",
+			"save": "وفّر 20%"
+		},
 		"plans": {
 			"free": {
 				"name": "مجاني",
@@ -284,11 +289,11 @@
 		"social": {
 			"title": "تابعنا",
 			"linkedin": "LinkedIn",
-			"twitter": "X / Twitter",
+			"twitter": "x.com",
 			"instagram": "Instagram",
 			"github": "GitHub"
 		},
-		"copyright": "© 2026 Oxxi. شركة مَوارد التقنية"
+		"copyright": "© 2026 Oxxi™. جميع الحقوق محفوظة"
 	},
 	"testimonials": {
 		"badge": "آراء العملاء",

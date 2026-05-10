@@ -19,13 +19,15 @@ import {
 	IconUsers,
 } from "@/components/ui/icons"
 
+export type BillingPeriod = "monthly" | "yearly"
+
 export type PricingCtaVariant = "default" | "secondary"
 
 export type PricingPlanId = "free" | "lite" | "pro"
 
 export type PricingPlan = {
 	id: PricingPlanId
-	monthlyPrice: number
+	price: { monthly: number; yearly: number }
 	featureIcons: FC<IconProps>[]
 	recommended?: boolean
 	ctaVariant: PricingCtaVariant
@@ -36,19 +38,19 @@ export const CONTACT_SALES_HREF = "https://t.me/hodler00"
 export const PRICING_PLANS: PricingPlan[] = [
 	{
 		id: "free",
-		monthlyPrice: 0,
+		price: { monthly: 0, yearly: 0 },
 		featureIcons: [IconUser, IconClockRewind, IconStars, IconFolder, IconFile, IconLock, IconMessageTextCircle],
 		ctaVariant: "secondary",
 	},
 	{
 		id: "lite",
-		monthlyPrice: 159,
+		price: { monthly: 159, yearly: 127 },
 		featureIcons: [IconUsers, IconPlus, IconJob, IconGlobe, IconTarget, IconList],
 		ctaVariant: "default",
 	},
 	{
 		id: "pro",
-		monthlyPrice: 399,
+		price: { monthly: 399, yearly: 319 },
 		featureIcons: [IconUsers, IconPlus, IconInfinity, IconBenchmark, IconCalendar],
 		recommended: true,
 		ctaVariant: "secondary",
